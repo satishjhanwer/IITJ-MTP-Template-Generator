@@ -1,0 +1,40 @@
+# Example Configuration - Major Project Report
+
+project:
+  title: "Project title"
+  type: "major-project"
+
+author:
+  name: "John Doe"
+  roll_number: "2021CS001"
+  email: "john.doe@university.edu"
+
+academic:
+  supervisor: "Dr. Jane Smith"
+  co_supervisor: "" # Optional
+  supervisor_designation: "Professor"
+  supervisor_department: "Department of Computer Science and Engineering"
+  department: "Department of Computer Science and Engineering"
+  university: "Your University Name"
+  degree: "Bachelor of Technology"
+  session: "2024-25"
+
+dates:
+  submission_date: "November 2024"
+
+# Optional formatting options
+formatting:
+  color_scheme: "blue"
+  font_size: 12
+  line_spacing: 1.5
+  bibliography_style: "IEEE"
+
+# Optional content options (for major project, typically all are included)
+content:
+  include_declaration: true
+  include_certificate: true
+  include_acknowledgments: true
+  include_abstract: true
+# Optional custom logo
+# assets:
+#   logo_path: "./path/to/your/logo.png"

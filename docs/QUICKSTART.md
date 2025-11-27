@@ -123,9 +123,9 @@ Open the generated PDF file:
 
 ## Next Steps
 
-- 📖 Read the [Input Schema](INPUT_SCHEMA.md) to understand all configuration options
-- 🎨 Check the [Customization Guide](CUSTOMIZATION.md) to personalize your report
-- ❓ See the [FAQ](FAQ.md) for common questions and issues
+- 📖 Read the [Input Schema](input-schema) to understand all configuration options
+- 🎨 Check the [Customization Guide](customization) to personalize your report
+- ❓ See the [FAQ](faq) for common questions and issues
 
 ## Common Issues
 
@@ -151,7 +151,7 @@ Open the generated PDF file:
 
 ## Getting Help
 
-- Check the [FAQ](FAQ.md)
+- Check the [FAQ](faq)
 - Open an issue on [GitHub](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/issues)
 - Read the full documentation in the `docs/` directory
 

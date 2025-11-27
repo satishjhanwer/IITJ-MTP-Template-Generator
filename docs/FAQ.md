@@ -348,9 +348,9 @@ content:
 
 ## Still Need Help?
 
-- Check the [Quick Start Guide](QUICKSTART.md)
-- Read the [Input Schema](INPUT_SCHEMA.md)
-- See the [Customization Guide](CUSTOMIZATION.md)
+- Check the [Quick Start Guide](quickstart)
+- Read the [Input Schema](input-schema)
+- See the [Customization Guide](customization)
 - Ask on [GitHub Discussions](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/discussions)
 - Open an [Issue](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/issues)
 

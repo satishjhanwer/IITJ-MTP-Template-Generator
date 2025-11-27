@@ -2,7 +2,7 @@
 
 Generate professional LaTeX academic reports with ease
 
-[Get Started](quickstart.md){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[Get Started](quickstart){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [View on GitHub](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator){: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
@@ -59,10 +59,10 @@ pdflatex proposal.tex
 
 ## Getting Started
 
-1. [Quick Start Guide](quickstart.md) - Get up and running in 5 minutes
-2. [Input Schema](input-schema.md) - Learn about configuration options
-3. [Customization Guide](customization.md) - Personalize your templates
-4. [FAQ](faq.md) - Common questions and troubleshooting
+1. [Quick Start Guide](quickstart) - Get up and running in 5 minutes
+2. [Input Schema](input-schema) - Learn about configuration options
+3. [Customization Guide](customization) - Personalize your templates
+4. [FAQ](faq) - Common questions and troubleshooting
 
 ## Example Output
 
@@ -86,4 +86,4 @@ MIT License - Free to use for academic and commercial purposes
 
 ---
 
-**Ready to create your academic report?** [Get Started →](quickstart.md)
+**Ready to create your academic report?** [Get Started →](quickstart)

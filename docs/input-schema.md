@@ -7,7 +7,7 @@ title: Input Schema Reference
 
 Complete reference for all configuration options.
 
-[View Full Documentation](INPUT_SCHEMA.md)
+[View Full Documentation](INPUT_SCHEMA)
 
 ## Quick Reference
 
@@ -51,4 +51,4 @@ assets:
 
 ---
 
-[← Back to Home](index.md)
+[← Back to Home](index)

@@ -226,6 +226,6 @@ The generator validates your configuration:
 
 ## See Also
 
-- [Quick Start Guide](QUICKSTART.md)
-- [Customization Guide](CUSTOMIZATION.md)
-- [FAQ](FAQ.md)
+- [Quick Start Guide](quickstart)
+- [Customization Guide](customization)
+- [FAQ](faq)

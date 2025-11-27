@@ -6,10 +6,10 @@ Get started with the IITJ MTP Template Generator in 5 minutes!
 
 Before you begin, make sure you have:
 
-1. **Python 3.8+** installed
+1. **Python 3.9+** installed
 
    ```bash
-   python --version  # Should show 3.8 or higher
+   python --version  # Should show 3.9 or higher
    ```
 
 2. **LaTeX distribution** installed

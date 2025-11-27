@@ -3,6 +3,9 @@
 Generate professional LaTeX academic reports (proposals, major projects, presentations) with dynamic user inputs.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/)
+[![Test Status](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/workflows/Test%20Generator/badge.svg)](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/actions)
 
 ## 🎯 Features
 
@@ -37,7 +40,7 @@ Generate professional LaTeX academic reports (proposals, major projects, present
 
 ```bash
 git clone https://github.com/satishjhanwer/IITJ-MTP-Template-Generator.git
-cd academic-report-generator
+cd IITJ-MTP-Template-Generator
 ```
 
 - Install Python dependencies:
@@ -45,8 +48,6 @@ cd academic-report-generator
 ```bash
 pip install -r scripts/requirements.txt
 ```
-
-### Generate Your First Report
 
 #### Interactive Mode
 
@@ -82,7 +83,7 @@ pdflatex proposal.tex
 ## 📁 Project Structure
 
 ```bash
-academic-report-generator/
+IITJ-MTP-Template-Generator/
 ├── scripts/
 │   ├── generate.py              # Main generator script
 │   ├── generate_simple.py       # Zero-dependency fallback

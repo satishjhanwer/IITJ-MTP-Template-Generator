@@ -55,7 +55,7 @@ jobs:
 
       - name: Test zero-dependency generator
         run: |
-          python scripts/generate_simple.py --config examples/sample-proposal/config.yaml --output output/test-simple
+          python scripts/generate_simple.py --config examples/sample-proposal/config.json --output output/test-simple
 
       - name: Upload generated files as artifacts
         uses: actions/upload-artifact@v4

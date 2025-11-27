@@ -1,0 +1,26 @@
+{
+  "project": {
+    "title": "Web Accessibility Analyzer",
+    "type": "proposal"
+  },
+  "author": {
+    "name": "John Doe",
+    "roll_number": "2021CS001",
+    "email": "john.doe@university.edu"
+  },
+  "academic": {
+    "supervisor": "Dr. Jane Smith",
+    "department": "Department of Computer Science",
+    "university": "Your University Name",
+    "degree": "Bachelor of Technology",
+    "session": "2024-25"
+  },
+  "dates": {
+    "submission_date": "November 2024"
+  },
+  "formatting": {
+    "font_size": 12,
+    "line_spacing": 1.5,
+    "bibliography_style": "IEEE"
+  }
+}

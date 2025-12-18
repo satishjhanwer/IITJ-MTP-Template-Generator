@@ -299,3 +299,5 @@ A: Currently no, but you can edit the generated slides after extraction.
 ---
 
 **Need Help?** Open an issue on [GitHub](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/issues)
+
+---

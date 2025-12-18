@@ -7,7 +7,7 @@ title: Input Schema Reference
 
 Complete reference for all configuration options.
 
-[View Full Documentation](INPUT_SCHEMA)
+[View Full Documentation](input_schema)
 
 ## Quick Reference
 

@@ -148,4 +148,8 @@ def prepare_context(config: Dict[str, Any]) -> Dict[str, Any]:
                                                                 config.get('dates', {}).get('submission_date', '')),
     }
     
+    # Add extracted content if present
+    if 'extracted_content' in config:
+        context['extracted_content'] = config['extracted_content']
+    
     return context

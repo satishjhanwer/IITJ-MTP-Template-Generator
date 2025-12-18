@@ -2,16 +2,25 @@
 
 % Motivation slide
 \begin{frame}{Motivation}
+{% if extracted_content and extracted_content.introduction and extracted_content.introduction.motivation %}
+{{ extracted_content.introduction.motivation }}
+{% else %}
 % TODO: Add motivation points
 \begin{itemize}
     \item Why is this project important?
     \item What problem does it address?
     \item What is the current state of the field?
 \end{itemize}
+{% endif %}
 \end{frame}
 
 % Problem statement slide
 \begin{frame}{Problem Statement}
+{% if extracted_content and extracted_content.introduction and extracted_content.introduction.problem_statement %}
+\begin{block}{Problem}
+    {{ extracted_content.introduction.problem_statement }}
+\end{block}
+{% else %}
 % TODO: Describe the problem clearly
 \begin{block}{Problem}
     Clearly state the problem your project addresses.
@@ -26,14 +35,23 @@
         \item Challenge 3
     \end{itemize}
 \end{block}
+{% endif %}
 \end{frame}
 
 % Objectives slide
 \begin{frame}{Objectives}
+{% if extracted_content and extracted_content.objectives %}
+\begin{enumerate}
+{% for objective in extracted_content.objectives %}
+    \item {{ objective }}
+{% endfor %}
+\end{enumerate}
+{% else %}
 % TODO: List your project objectives
 \begin{enumerate}
     \item Objective 1: Brief description
     \item Objective 2: Brief description
     \item Objective 3: Brief description
 \end{enumerate}
+{% endif %}
 \end{frame}

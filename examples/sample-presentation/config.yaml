@@ -27,6 +27,10 @@ presentation:
   aspect_ratio: "16:9" # Aspect ratio: 16:9 or 4:3
   presentation_date: "December 2024" # Presentation date (defaults to submission_date if not specified)
 
+  # Content extraction (optional)
+  extract_from_report: false # Set to true to extract content from existing report
+  report_path: "" # Path to existing report (e.g., "./output/my-project/main.tex")
+
 # Optional formatting options
 formatting:
   color_scheme: "blue"

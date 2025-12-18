@@ -2,16 +2,23 @@
 
 % System architecture slide
 \begin{frame}{System Architecture}
-% TODO: Add architecture diagram
-\begin{figure}
-    \centering
-    % Uncomment and add your architecture diagram
-    % \includegraphics[width=0.8\textwidth]{figures/architecture.png}
-    \caption{System Architecture Overview}
-\end{figure}
+{% if extracted_content and extracted_content.methodology and extracted_content.methodology.overview %}
+{{ extracted_content.methodology.overview }}
+{% else %}
+% TODO: Add system architecture diagram or description
+\begin{center}
+    \textit{[Add system architecture diagram here]}
+\end{center}
 
-\vspace{0.3cm}
-\textit{Note: Add your system architecture diagram in the figures/ directory}
+\vspace{0.5cm}
+
+Key components:
+\begin{itemize}
+    \item Component 1
+    \item Component 2
+    \item Component 3
+\end{itemize}
+{% endif %}
 \end{frame}
 
 % Design approach slide
@@ -32,30 +39,44 @@
 
 % Technologies used slide
 \begin{frame}{Technologies Used}
-% TODO: List technologies and tools
-\begin{columns}
-\column{0.5\textwidth}
-\textbf{Frontend/Client}
-\begin{itemize}
-    \item Technology 1
-    \item Technology 2
-    \item Technology 3
-\end{itemize}
-
-\column{0.5\textwidth}
-\textbf{Backend/Server}
-\begin{itemize}
-    \item Technology 1
-    \item Technology 2
-    \item Technology 3
-\end{itemize}
+{% if extracted_content and extracted_content.methodology and extracted_content.methodology.technologies %}
+\begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+        \textbf{Tools & Frameworks:}
+        \begin{itemize}
+{% for tech in extracted_content.methodology.technologies[:3] %}
+            \item {{ tech }}
+{% endfor %}
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.5\textwidth}
+        \textbf{Additional:}
+        \begin{itemize}
+{% for tech in extracted_content.methodology.technologies[3:] %}
+            \item {{ tech }}
+{% endfor %}
+        \end{itemize}
+    \end{column}
 \end{columns}
-
-\vspace{0.5cm}
-
-\textbf{Tools \& Frameworks}
-\begin{itemize}
-    \item Development tools
-    \item Testing frameworks
-\end{itemize}
+{% else %}
+% TODO: List technologies and tools used
+\begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+        \textbf{Frontend:}
+        \begin{itemize}
+            \item Technology 1
+            \item Technology 2
+        \end{itemize}
+    \end{column}
+    
+    \begin{column}{0.5\textwidth}
+        \textbf{Backend:}
+        \begin{itemize}
+            \item Technology 3
+            \item Technology 4
+        \end{itemize}
+    \end{column}
+\end{columns}
+{% endif %}
 \end{frame}

@@ -2,12 +2,17 @@
 
 % Summary slide
 \begin{frame}{Summary}
+{% if extracted_content and extracted_content.conclusion and extracted_content.conclusion.summary %}
+{{ extracted_content.conclusion.summary }}
+{% else %}
 % TODO: Summarize key achievements
+\textbf{Key Achievements:}
 \begin{itemize}
-    \item Achievement 1: Brief description
-    \item Achievement 2: Brief description
-    \item Achievement 3: Brief description
+    \item Achievement 1
+    \item Achievement 2
+    \item Achievement 3
 \end{itemize}
+{% endif %}
 
 \vspace{0.5cm}
 
@@ -18,12 +23,20 @@
 
 % Future work slide
 \begin{frame}{Future Work}
-% TODO: List potential enhancements and future directions
+{% if extracted_content and extracted_content.conclusion and extracted_content.conclusion.future_work %}
 \begin{itemize}
-    \item Enhancement 1: Description
-    \item Enhancement 2: Description
-    \item Enhancement 3: Description
+{% for item in extracted_content.conclusion.future_work %}
+    \item {{ item }}
+{% endfor %}
 \end{itemize}
+{% else %}
+% TODO: List future enhancements
+\begin{itemize}
+    \item Enhancement 1
+    \item Enhancement 2
+    \item Enhancement 3
+\end{itemize}
+{% endif %}
 
 \vspace{0.5cm}
 

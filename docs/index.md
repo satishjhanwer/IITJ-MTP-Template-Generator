@@ -60,9 +60,10 @@ pdflatex proposal.tex
 ## Getting Started
 
 1. [Quick Start Guide](quickstart) - Get up and running in 5 minutes
-2. [Input Schema](input-schema) - Learn about configuration options
-3. [Customization Guide](customization) - Personalize your templates
-4. [FAQ](faq) - Common questions and troubleshooting
+2. [CI/CD Auto-Compilation](ci-cd) - Automatic PDF generation with GitHub Actions
+3. [Input Schema](input-schema) - Learn about configuration options
+4. [Customization Guide](customization) - Personalize your templates
+5. [FAQ](faq) - Common questions and troubleshooting
 
 ## Example Output
 

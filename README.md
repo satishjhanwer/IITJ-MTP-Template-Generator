@@ -6,6 +6,7 @@ Generate professional LaTeX academic reports (proposals, major projects, present
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![GitHub Pages](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/)
 [![Test Status](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/workflows/Test%20Generator/badge.svg)](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/actions)
+[![Compile LaTeX](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/workflows/Compile%20LaTeX%20to%20PDF/badge.svg)](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/actions)
 
 ## 🎯 Features
 
@@ -60,10 +61,24 @@ python scripts/generate.py --config examples/sample-proposal/config.yaml
 
 ### Compile the Generated Report
 
+#### Option 1: Automatic Compilation (Recommended)
+
+If you're using GitHub, push your generated files and let GitHub Actions compile them automatically:
+
+```bash
+git add output/
+git commit -m "Add my project report"
+git push origin main
+```
+
+Then download the compiled PDF from the **Actions** tab → **Artifacts**. See [CI/CD Guide](docs/CI_CD.md) for details.
+
+#### Option 2: Local Compilation
+
 ```bash
 cd output/your-project-name
-pdflatex proposal.tex  # or main.tex for major projects
-bibtex proposal        # or main
+pdflatex proposal.tex  # or main.tex for major projects, slides.tex for presentations
+bibtex proposal        # or main (skip for presentations)
 pdflatex proposal.tex
 pdflatex proposal.tex
 ```
@@ -71,6 +86,7 @@ pdflatex proposal.tex
 ## 📚 Documentation
 
 - [Quick Start Guide](docs/QUICKSTART.md) - Get started in 5 minutes
+- [CI/CD Auto-Compilation](docs/CI_CD.md) - Automatic PDF generation with GitHub Actions
 - [Input Schema](docs/INPUT_SCHEMA.md) - Complete configuration reference
 - [Customization Guide](docs/CUSTOMIZATION.md) - Customize templates and formatting
 - [FAQ](docs/FAQ.md) - Frequently asked questions
@@ -198,9 +214,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [x] Proposal report template
 - [x] Major project report template
 - [x] Phase 2: Presentation slides (Beamer)
-- [ ] Phase 3: Web-based configuration generator
-- [ ] Phase 4: Multiple university templates
-- [ ] Phase 5: CI/CD for auto-compilation
+- [/] Phase 3: Advanced features
+- [x] CI/CD auto-compilation
+- [ ] Web-based configuration generator
+- [ ] Multiple university templates
 
 ---
 

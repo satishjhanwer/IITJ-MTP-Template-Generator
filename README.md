@@ -2,7 +2,7 @@
 
 Generate professional LaTeX academic reports (proposals, major projects, presentations) with dynamic user inputs.
 
-[![GitHub Actions](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/workflows/Compile%20LaTeX/badge.svg)](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/actions)
+<!-- [![GitHub Actions](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/workflows/Compile%20LaTeX/badge.svg)](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/actions) -->
 [![Tests](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/workflows/Run%20Tests/badge.svg)](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/actions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
@@ -254,8 +254,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Multi-language support
 - [ ] PyPI package distribution
 - [ ] VS Code extension
-
-See [PENDING_ITEMS.md](PENDING_ITEMS.md) for detailed feature roadmap.
 
 ---
 

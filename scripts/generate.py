@@ -289,6 +289,35 @@ def generate_report(config: Dict[str, Any], output_dir: Optional[str] = None) ->
     # Create output directory
     os.makedirs(output_dir, exist_ok=True)
     
+    # Handle content extraction for presentations
+    if config['project']['type'] == 'presentation':
+        extract_config = config.get('presentation', {})
+        if extract_config.get('extract_from_report', False):
+            report_path = extract_config.get('report_path', '')
+            
+            # Resolve relative paths
+            if report_path and not os.path.isabs(report_path):
+                report_path = os.path.abspath(report_path)
+            
+            if report_path and os.path.exists(report_path):
+                try:
+                    print(f"\n📄 Extracting content from: {report_path}")
+                    from utils.content_extractor import extract_content_from_report
+                    extracted = extract_content_from_report(report_path)
+                    
+                    if extracted:
+                        config['extracted_content'] = extracted
+                        print("✅ Content extracted successfully")
+                    else:
+                        print("⚠️  Content extraction returned no data")
+                        print("   Generating presentation with TODO placeholders")
+                except Exception as e:
+                    print(f"⚠️  Content extraction failed: {e}")
+                    print("   Generating presentation with TODO placeholders")
+            elif report_path:
+                print(f"\n⚠️  Report file not found: {report_path}")
+                print("   Generating presentation with TODO placeholders")
+    
     # Get script directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
     

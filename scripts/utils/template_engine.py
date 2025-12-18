@@ -1,4 +1,7 @@
-"""Template rendering utilities for IITJ MTP Template Generator."""
+"""Template rendering engine using Jinja2.
+
+This module handles LaTeX template rendering with Jinja2.
+"""
 
 import os
 from pathlib import Path
@@ -6,34 +9,40 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from typing import Dict, Any
 
 
-def setup_jinja_env(template_dir: str) -> Environment:
-    """Set up Jinja2 environment for LaTeX templating.
+def get_template_environment(template_dir: str) -> Environment:
+    """Create Jinja2 environment for template rendering.
     
     Args:
-        template_dir: Directory containing templates
+        template_dir: Path to template directory
         
     Returns:
         Configured Jinja2 Environment
     """
-    env = Environment(
-        loader=FileSystemLoader(template_dir),
-        autoescape=select_autoescape(['html', 'xml']),
-        block_start_string='\\BLOCK{',
-        block_end_string='}',
-        variable_start_string='\\VAR{',
-        variable_end_string='}',
-        comment_start_string='\\#{',
-        comment_end_string='}',
-        line_statement_prefix='%%',
-        line_comment_prefix='%#',
-        trim_blocks=True,
-        lstrip_blocks=True,
-    )
-    
-    # Add custom filters
-    env.filters['latex_escape'] = latex_escape
-    
-    return env
+    # Try to use cached environment for better performance
+    try:
+        from .performance import get_cached_template_environment
+        return get_cached_template_environment(template_dir)
+    except (ImportError, AttributeError):
+        # Fallback to creating new environment if performance module unavailable
+        env = Environment(
+            loader=FileSystemLoader(template_dir),
+            autoescape=select_autoescape(['html', 'xml']),
+            block_start_string='\\BLOCK{',
+            block_end_string='}',
+            variable_start_string='\\VAR{',
+            variable_end_string='}',
+            comment_start_string='\\#{',
+            comment_end_string='}',
+            line_statement_prefix='%%',
+            line_comment_prefix='%#',
+            trim_blocks=True,
+            lstrip_blocks=True,
+        )
+        
+        # Add custom filters
+        env.filters['latex_escape'] = latex_escape
+        
+        return env
 
 
 def latex_escape(text: str) -> str:

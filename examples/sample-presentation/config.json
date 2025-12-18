@@ -1,0 +1,38 @@
+{
+  "project": {
+    "title": "Your Project Title",
+    "type": "presentation"
+  },
+  "author": {
+    "name": "John Doe",
+    "roll_number": "2021CS001",
+    "email": "john.doe@university.edu"
+  },
+  "academic": {
+    "supervisor": "Dr. Jane Smith",
+    "co_supervisor": "",
+    "department": "Department of Computer Science and Engineering",
+    "university": "Your University Name",
+    "degree": "Bachelor of Technology",
+    "session": "2024-25"
+  },
+  "dates": {
+    "submission_date": "November 2024"
+  },
+  "presentation": {
+    "theme": "Madrid",
+    "color_scheme": "default",
+    "aspect_ratio": "16:9",
+    "presentation_date": "December 2024"
+  },
+  "formatting": {
+    "color_scheme": "blue",
+    "font_size": 12
+  },
+  "content": {
+    "include_declaration": false,
+    "include_certificate": false,
+    "include_acknowledgments": false,
+    "include_abstract": false
+  }
+}

@@ -1,0 +1,37 @@
+\documentclass[aspectratio=\VAR{ASPECT_RATIO_VALUE}]{beamer}
+
+% Theme selection
+\usetheme{\VAR{THEME}}
+\usecolortheme{\VAR{COLOR_SCHEME}}
+
+% Packages
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{hyperref}
+
+% Title information
+\title{\VAR{TITLE}}
+\author{\VAR{AUTHOR_NAME}}
+\institute{
+    \VAR{DEPARTMENT} \\
+    \VAR{UNIVERSITY}
+}
+\date{\VAR{PRESENTATION_DATE}}
+
+% Custom settings
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+
+\begin{document}
+
+% Title and outline
+\input{sections/title.tex}
+
+% Main content sections
+\input{sections/introduction.tex}
+\input{sections/methodology.tex}
+\input{sections/results.tex}
+\input{sections/conclusion.tex}
+
+\end{document}

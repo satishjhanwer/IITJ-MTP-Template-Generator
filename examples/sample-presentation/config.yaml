@@ -1,0 +1,40 @@
+# Example Configuration - Presentation Slides
+
+project:
+  title: "Your Project Title"
+  type: "presentation"
+
+author:
+  name: "John Doe"
+  roll_number: "2021CS001"
+  email: "john.doe@university.edu"
+
+academic:
+  supervisor: "Dr. Jane Smith"
+  co_supervisor: "" # Optional, leave empty if not applicable
+  department: "Department of Computer Science and Engineering"
+  university: "Your University Name"
+  degree: "Bachelor of Technology"
+  session: "2024-25"
+
+dates:
+  submission_date: "November 2024"
+
+# Presentation-specific configuration
+presentation:
+  theme: "Madrid" # Beamer theme: Madrid, Berlin, Copenhagen, etc.
+  color_scheme: "default" # Color theme: default, dolphin, beaver, etc.
+  aspect_ratio: "16:9" # Aspect ratio: 16:9 or 4:3
+  presentation_date: "December 2024" # Presentation date (defaults to submission_date if not specified)
+
+# Optional formatting options
+formatting:
+  color_scheme: "blue"
+  font_size: 12
+
+# Optional content options
+content:
+  include_declaration: false # Not applicable for presentations
+  include_certificate: false # Not applicable for presentations
+  include_acknowledgments: false # Not applicable for presentations
+  include_abstract: false # Not applicable for presentations

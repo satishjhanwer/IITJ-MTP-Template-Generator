@@ -11,21 +11,16 @@ Generate professional LaTeX academic reports (proposals, major projects, present
 
 - **Interactive CLI** - Easy-to-use command-line interface for collecting inputs
 - **YAML Configuration** - Use config files for reproducible report generation
-- **Multiple Report Types** - Proposal reports and major project reports (presentations coming in Phase 2)
+- **Multiple Report Types** - Proposal reports, major project reports, and presentation slides (Beamer)
 - **Professional Templates** - IEEE-style LaTeX templates with proper formatting
 - **Customizable** - Modify templates to match your university's requirements
 - **Well-Documented** - Comprehensive guides and examples included
 
 ## 📋 Supported Report Types
 
-### Phase 1 (Available Now)
-
 - ✅ **Proposal Report** (MTP1/Research Proposal)
 - ✅ **Major Project Report** (Full Thesis/Dissertation)
-
-### Phase 2 (Coming Soon)
-
-- ⏳ **Presentation Slides** (Beamer)
+- ✅ **Presentation Slides** (Beamer)
 
 ## 🚀 Quick Start
 
@@ -91,10 +86,12 @@ IITJ-MTP-Template-Generator/
 │   └── utils/                   # Utility modules
 ├── templates/
 │   ├── proposal/                # Proposal report template
-│   └── major-project/           # Major project template
+│   ├── major-project/           # Major project template
+│   └── presentation/            # Presentation slides template
 ├── examples/
 │   ├── sample-proposal/         # Example proposal config
-│   └── sample-major-project/    # Example major project config
+│   ├── sample-major-project/    # Example major project config
+│   └── sample-presentation/     # Example presentation config
 ├── docs/                        # Documentation
 └── README.md                    # This file
 ```
@@ -200,7 +197,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [x] Phase 1: Core generator and templates
 - [x] Proposal report template
 - [x] Major project report template
-- [ ] Phase 2: Presentation slides (Beamer)
+- [x] Phase 2: Presentation slides (Beamer)
 - [ ] Phase 3: Web-based configuration generator
 - [ ] Phase 4: Multiple university templates
 - [ ] Phase 5: CI/CD for auto-compilation

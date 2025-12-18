@@ -90,10 +90,10 @@ def collect_interactive_inputs() -> Dict[str, Any]:
     print("Report type:")
     print("  [1] Proposal (MTP1/Research Proposal)")
     print("  [2] Major Project Report (Full Thesis)")
-    print("  [3] Presentation Slides (Coming Soon)")
+    print("  [3] Presentation Slides (Beamer)")
     
     while True:
-        choice = input("Choice [1-2]: ").strip()
+        choice = input("Choice [1-3]: ").strip()
         if choice == '1':
             project_type = 'proposal'
             break
@@ -101,9 +101,10 @@ def collect_interactive_inputs() -> Dict[str, Any]:
             project_type = 'major-project'
             break
         elif choice == '3':
-            print("❌ Presentation slides are not yet implemented (Phase 2).")
+            project_type = 'presentation'
+            break
         else:
-            print("❌ Invalid choice. Please enter 1 or 2.")
+            print("❌ Invalid choice. Please enter 1, 2, or 3.")
     
     print()
     
@@ -381,6 +382,8 @@ Examples:
     
     if config['project']['type'] == 'proposal':
         print(f"   2. Compile with: cd {output_dir} && pdflatex proposal.tex && bibtex proposal && pdflatex proposal.tex && pdflatex proposal.tex")
+    elif config['project']['type'] == 'presentation':
+        print(f"   2. Compile with: cd {output_dir} && pdflatex slides.tex && pdflatex slides.tex")
     else:
         print(f"   2. Compile with: cd {output_dir} && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex")
     

@@ -53,17 +53,21 @@ def collect_inputs():
     print("Report type:")
     print("  [1] Proposal (MTP1/Research Proposal)")
     print("  [2] Major Project Report (Full Thesis)")
+    print("  [3] Presentation Slides (Beamer)")
     
     while True:
-        choice = input("Choice [1-2]: ").strip()
+        choice = input("Choice [1-3]: ").strip()
         if choice == '1':
             project_type = 'proposal'
             break
         elif choice == '2':
             project_type = 'major-project'
             break
+        elif choice == '3':
+            project_type = 'presentation'
+            break
         else:
-            print("❌ Invalid choice. Please enter 1 or 2.")
+            print("❌ Invalid choice. Please enter 1, 2, or 3.")
     
     print()
     
@@ -138,6 +142,12 @@ def copy_and_process_files(template_type, config, output_dir, script_dir):
         'INCLUDE_CERTIFICATE': 'true',
         'INCLUDE_ACKNOWLEDGMENTS': 'true',
         'INCLUDE_ABSTRACT': 'true',
+        # Presentation-specific
+        'THEME': config.get('presentation', {}).get('theme', 'Madrid'),
+        'COLOR_SCHEME': config.get('presentation', {}).get('color_scheme', 'default'),
+        'ASPECT_RATIO': config.get('presentation', {}).get('aspect_ratio', '16:9'),
+        'ASPECT_RATIO_VALUE': '169' if config.get('presentation', {}).get('aspect_ratio', '16:9') == '16:9' else '43',
+        'PRESENTATION_DATE': config.get('presentation', {}).get('presentation_date', config['dates']['submission_date']),
     }
     
     # Process all files
@@ -260,6 +270,8 @@ def main():
     
     if config['project']['type'] == 'proposal':
         print(f"   2. Compile with: cd {output_dir} && pdflatex proposal.tex && bibtex proposal && pdflatex proposal.tex && pdflatex proposal.tex")
+    elif config['project']['type'] == 'presentation':
+        print(f"   2. Compile with: cd {output_dir} && pdflatex slides.tex && pdflatex slides.tex")
     else:
         print(f"   2. Compile with: cd {output_dir} && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex")
     

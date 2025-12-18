@@ -138,6 +138,14 @@ def prepare_context(config: Dict[str, Any]) -> Dict[str, Any]:
         
         # Assets
         'LOGO_PATH': config.get('assets', {}).get('logo_path', 'logo.png'),
+        
+        # Presentation-specific
+        'THEME': config.get('presentation', {}).get('theme', 'Madrid'),
+        'COLOR_SCHEME': config.get('presentation', {}).get('color_scheme', 'default'),
+        'ASPECT_RATIO': config.get('presentation', {}).get('aspect_ratio', '16:9'),
+        'ASPECT_RATIO_VALUE': '169' if config.get('presentation', {}).get('aspect_ratio', '16:9') == '16:9' else '43',
+        'PRESENTATION_DATE': config.get('presentation', {}).get('presentation_date', 
+                                                                config.get('dates', {}).get('submission_date', '')),
     }
     
     return context

@@ -1,4 +1,5 @@
 # Example Configuration - Proposal Report
+# Full options: docs/input_schema.md
 
 project:
   title: "Project title"
@@ -16,6 +17,9 @@ academic:
   university: "Your University Name"
   degree: "Bachelor of Technology"
   session: "2024-25"
+  # If you change project.type to "major-project", uncomment and set these (certificate/supervisor lines):
+  # supervisor_designation: "Professor"
+  # supervisor_department: "Department of Computer Science and Engineering"
 
 dates:
   submission_date: "November 2024"
@@ -33,6 +37,7 @@ content:
   include_certificate: true
   include_acknowledgments: true
   include_abstract: true
-# Optional custom logo
+
+# Optional custom logo (path must exist on disk when set; leave commented to use the default placeholder)
 # assets:
 #   logo_path: "./path/to/your/logo.png"

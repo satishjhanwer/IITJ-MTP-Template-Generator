@@ -56,16 +56,16 @@ Search the generated folder for `[TODO]` and `% TODO` so nothing important is le
 
 ## Tiny glossary
 
-- **LaTeX** — A system for writing structured documents; `.tex` files are source files.
-- **PDF** — The printable file you submit; produced by compiling `.tex` files.
-- **Terminal / command prompt** — The text window where you type `python scripts/generate.py`.
-- **YAML config** — A text file (often `config.yaml`) listing your project settings for non-interactive runs.
-- **`output/`** — Default folder where generated projects are stored (ignored by Git so your drafts are not committed by mistake).
+- **LaTeX** A system for writing structured documents; `.tex` files are source files.
+- **PDF** The printable file you submit; produced by compiling `.tex` files.
+- **Terminal / command prompt** The text window where you type `python scripts/generate.py`.
+- **YAML config** A text file (often `config.yaml`) listing your project settings for non-interactive runs.
+- **`output/`** Default folder where generated projects are stored (ignored by Git so your drafts are not committed by mistake).
 
 ## Where to get help
 
-- [FAQ](faq) — Common errors and questions.
-- [Input schema](input_schema) — All configuration fields explained.
-- [GitHub Issues](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/issues) — Bugs and feature requests.
+- [FAQ](faq) Common errors and questions.
+- [Input schema](input_schema) All configuration fields explained.
+- [GitHub Issues](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/issues) Bugs and feature requests.
 
 If someone in your lab already has Python and LaTeX working, asking them to verify your install can save a lot of time.

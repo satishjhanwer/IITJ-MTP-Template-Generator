@@ -1,4 +1,9 @@
 # Example Configuration - Presentation Slides
+# Full options: docs/input_schema.md
+#
+# presentation.* controls Beamer (slides). formatting.* is for shared document settings where used.
+# presentation.color_scheme is the Beamer color theme (e.g. default, dolphin); it is not the same as formatting.color_scheme.
+# presentation_date falls back to dates.submission_date if omitted or empty.
 
 project:
   title: "Your Project Title"
@@ -23,9 +28,9 @@ dates:
 # Presentation-specific configuration
 presentation:
   theme: "Madrid" # Beamer theme: Madrid, Berlin, Copenhagen, etc.
-  color_scheme: "default" # Color theme: default, dolphin, beaver, etc.
+  color_scheme: "default" # Beamer color theme: default, dolphin, beaver, etc.
   aspect_ratio: "16:9" # Aspect ratio: 16:9 or 4:3
-  presentation_date: "December 2024" # Presentation date (defaults to submission_date if not specified)
+  presentation_date: "December 2024" # Omit or use "" to use submission_date instead
 
   # Content extraction (optional)
   extract_from_report: false # Set to true to extract content from existing report

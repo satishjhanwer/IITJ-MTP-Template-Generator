@@ -1,6 +1,6 @@
 # Example configuration files
 
-This folder contains **sample configs** you can copy and edit. They are **inputs** to the generator, not pre-written reports.
+This folder contains **sample configs** you can copy and edit. They are **inputs** to the generator, not pre-written reports. Each `config.yaml` starts with a pointer to **[docs/input_schema.md](../docs/input_schema.md)** for every supported field.
 
 ## What is included
 
@@ -10,8 +10,8 @@ This folder contains **sample configs** you can copy and edit. They are **inputs
 | [sample-major-project/](sample-major-project/) | `config.yaml` | Major project / thesis-style |
 | [sample-presentation/](sample-presentation/) | `config.yaml`, `config.json` | Beamer slides |
 
-- **`config.yaml`** — Use with `python scripts/generate.py --config ...` (full generator).
-- **`config.json`** — Use with `python scripts/generate_simple.py --config ...` (zero-dependency generator; limited features).
+- **`config.yaml`** Use with `python scripts/generate.py --config ...` (full generator).
+- **`config.json`** Use with `python scripts/generate_simple.py --config ...` (zero-dependency generator; limited features).
 
 ## What running the generator does
 

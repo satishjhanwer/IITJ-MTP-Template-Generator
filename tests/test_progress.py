@@ -1,9 +1,5 @@
 """Tests for progress tracking utilities."""
 
-import pytest
-import time
-from io import StringIO
-import sys
 from scripts.utils.progress import (
     ProgressBar,
     Spinner,
@@ -85,7 +81,7 @@ class TestProgressContext:
         except ValueError:
             pass
         # Progress should still be finished
-        assert progress.current == 10
+        assert progress.current == 10 # type: ignore
 
 
 class TestSpinnerContext:
@@ -108,7 +104,7 @@ class TestSpinnerContext:
         except ValueError:
             pass
         # Spinner should still be stopped
-        assert spinner.running == False
+        assert spinner.running == False # type: ignore
 
 
 class TestWithProgressDecorator:
@@ -131,3 +127,82 @@ class TestWithProgressDecorator:
         
         result = add(2, 3)
         assert result == 5
+
+
+class TestProgressBarEdgeCases:
+    """Tests for edge cases in ProgressBar."""
+    
+    def test_progress_with_zero_total(self):
+        """Test progress bar with zero total (line 37)."""
+        progress = ProgressBar(0, "Empty")
+        progress.update(1)
+        # Should handle gracefully without error
+        assert progress.current == 0
+        progress.finish()
+        assert progress.current == 0
+    
+    def test_progress_eta_calculation_at_start(self):
+        """Test ETA calculation when current is 0 (line 49)."""
+        progress = ProgressBar(100, "Processing")
+        # No updates yet - current should be 0
+        assert progress.current == 0
+        progress.finish()
+        # After finish, verify final display runs
+        assert progress.current == 100
+    
+    def test_progress_eta_calculation_with_update(self):
+        """Test ETA calculation when current > 0 (line 49)."""
+        import time
+        progress = ProgressBar(10, "Processing")
+        # Update to non-zero
+        progress.update(5)
+        assert progress.current == 5
+        # Small delay to ensure time has passed
+        time.sleep(0.01)
+        # Display will calculate ETA since current > 0
+        progress._display()
+        assert progress.current == 5
+    
+    def test_progress_display_called(self):
+        """Test that display is called during update."""
+        progress = ProgressBar(10, "Test")
+        progress.update(5)
+        assert progress.current == 5
+
+
+class TestSpinnerEdgeCases:
+    """Tests for edge cases in Spinner."""
+    
+    def test_spinner_display_when_not_running(self):
+        """Test spinner display when not running (line 95)."""
+        spinner = Spinner("Test")
+        # Don't start the spinner
+        assert spinner.running == False
+        spinner._display()
+        # Should not raise error
+        assert spinner.running == False
+    
+    def test_spinner_stop_with_message(self):
+        """Test spinner stop with final message (line 101)."""
+        spinner = Spinner("Processing")
+        spinner.start()
+        assert spinner.running == True
+        spinner.stop(final_message="Completed!")
+        assert spinner.running == False
+    
+    def test_spinner_stop_without_message(self):
+        """Test spinner stop without message."""
+        spinner = Spinner("Processing")
+        spinner.start()
+        assert spinner.running == True
+        spinner.stop()
+        assert spinner.running == False
+    
+    def test_spinner_frame_cycling(self):
+        """Test that spinner cycles through frames."""
+        spinner = Spinner("Test")
+        initial_frame = spinner.frame_index
+        spinner.start()
+        spinner._display()
+        # Frame index should increment
+        assert spinner.frame_index > initial_frame

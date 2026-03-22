@@ -1,6 +1,5 @@
 """Tests for error handling utilities."""
 
-import pytest
 from scripts.utils.errors import (
     GeneratorError,
     ConfigurationError,

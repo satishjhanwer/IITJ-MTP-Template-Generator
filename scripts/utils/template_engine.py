@@ -4,7 +4,6 @@ This module handles LaTeX template rendering with Jinja2.
 """
 
 import os
-from pathlib import Path
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from typing import Dict, Any
 
@@ -88,7 +87,7 @@ def render_template(template_path: str, context: Dict[str, Any], output_path: st
     template_dir = os.path.dirname(template_path)
     template_name = os.path.basename(template_path)
     
-    env = setup_jinja_env(template_dir)
+    env = get_template_environment(template_dir)
     template = env.get_template(template_name)
     
     rendered = template.render(**context)

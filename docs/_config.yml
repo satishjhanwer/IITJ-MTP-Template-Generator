@@ -17,6 +17,8 @@ nav_links:
     url: /customization
   - title: FAQ
     url: /faq
+  - title: CI-CD
+    url: /ci-cd
   - title: GitHub
     url: https://github.com/satishjhanwer/IITJ-MTP-Template-Generator
 

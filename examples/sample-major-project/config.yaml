@@ -1,4 +1,5 @@
 # Example Configuration - Major Project Report
+# Full options: docs/input_schema.md
 
 project:
   title: "Project title"
@@ -35,6 +36,7 @@ content:
   include_certificate: true
   include_acknowledgments: true
   include_abstract: true
-# Optional custom logo
+
+# Optional custom logo (path must exist on disk when set; leave commented to use the default placeholder)
 # assets:
 #   logo_path: "./path/to/your/logo.png"

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>config.yaml generator — IITJ MTP Template Generator</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <h1>Web-based configuration generator</h1>
+        <p>
+          Fill in your project details, preview <code>config.yaml</code>, then download or copy it. Run
+          <code>python scripts/generate.py --config config.yaml</code> locally to generate your LaTeX project.
+        </p>
+      </header>
+
+      <div class="layout">
+        <form class="panel" id="config-form" novalidate>
+          <h2>Configuration</h2>
+
+          <fieldset>
+            <legend>Project</legend>
+            <div class="row">
+              <div>
+                <label for="project-type">Report type <span class="req">*</span></label>
+                <select id="project-type" name="project.type" required>
+                  <option value="proposal">Proposal</option>
+                  <option value="major-project">Major project</option>
+                  <option value="presentation">Presentation (Beamer)</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="project-title">Title <span class="req">*</span></label>
+                <input type="text" id="project-title" name="project.title" required autocomplete="off" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Author</legend>
+            <div class="row two">
+              <div>
+                <label for="author-name">Full name <span class="req">*</span></label>
+                <input type="text" id="author-name" name="author.name" required autocomplete="name" />
+              </div>
+              <div>
+                <label for="author-roll">Roll number <span class="req">*</span></label>
+                <input type="text" id="author-roll" name="author.roll_number" required />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="author-email">Email</label>
+                <input type="email" id="author-email" name="author.email" placeholder="optional" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Academic</legend>
+            <div class="row">
+              <div>
+                <label for="academic-supervisor">Supervisor <span class="req">*</span></label>
+                <input type="text" id="academic-supervisor" name="academic.supervisor" required />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="academic-co">Co-supervisor</label>
+                <input type="text" id="academic-co" name="academic.co_supervisor" placeholder="optional" />
+              </div>
+            </div>
+            <div class="row two">
+              <div>
+                <label for="academic-dept">Department <span class="req">*</span></label>
+                <input type="text" id="academic-dept" name="academic.department" required />
+              </div>
+              <div>
+                <label for="academic-uni">University <span class="req">*</span></label>
+                <input type="text" id="academic-uni" name="academic.university" required />
+              </div>
+            </div>
+            <div class="row two">
+              <div>
+                <label for="academic-degree">Degree <span class="req">*</span></label>
+                <input type="text" id="academic-degree" name="academic.degree" value="Bachelor of Technology" required />
+              </div>
+              <div>
+                <label for="academic-session">Session <span class="req">*</span></label>
+                <input type="text" id="academic-session" name="academic.session" value="2024-25" required />
+              </div>
+            </div>
+            <div class="row two" id="major-supervisor-fields">
+              <div>
+                <label for="supervisor-designation">Supervisor designation <span class="req">*</span></label>
+                <input type="text" id="supervisor-designation" name="academic.supervisor_designation" value="Professor" />
+                <p class="hint">Shown on certificate (major project).</p>
+              </div>
+              <div>
+                <label for="supervisor-dept">Supervisor department <span class="req">*</span></label>
+                <input type="text" id="supervisor-dept" name="academic.supervisor_department" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Dates</legend>
+            <div class="row">
+              <div>
+                <label for="submission-date">Submission date <span class="req">*</span></label>
+                <input type="text" id="submission-date" name="dates.submission_date" placeholder="November 2024" required />
+                <p class="hint">Format: Month YYYY (e.g. November 2024).</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <div id="presentation-block" class="hidden">
+            <fieldset>
+              <legend>Presentation (Beamer)</legend>
+              <div class="row two">
+                <div>
+                  <label for="pres-theme">Theme</label>
+                  <input type="text" id="pres-theme" name="presentation.theme" value="Madrid" />
+                </div>
+                <div>
+                  <label for="pres-color">Beamer color theme</label>
+                  <input type="text" id="pres-color" name="presentation.color_scheme" value="default" />
+                </div>
+              </div>
+              <div class="row two">
+                <div>
+                  <label for="pres-aspect">Aspect ratio</label>
+                  <select id="pres-aspect" name="presentation.aspect_ratio">
+                    <option value="16:9">16:9</option>
+                    <option value="4:3">4:3</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="pres-date">Presentation date</label>
+                  <input type="text" id="pres-date" name="presentation.presentation_date" placeholder="Leave empty to use submission date" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="checkbox-row">
+                  <label>
+                    <input type="checkbox" id="pres-extract" name="presentation.extract_from_report" />
+                    Extract content from existing report
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div>
+                  <label for="pres-report-path">Report path (.tex)</label>
+                  <input type="text" id="pres-report-path" name="presentation.report_path" placeholder="./output/my-project/main.tex" />
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <details class="advanced">
+            <summary>Formatting, content &amp; assets</summary>
+
+            <fieldset>
+              <legend>Formatting</legend>
+              <div class="row two">
+                <div>
+                  <label for="fmt-color">Document color scheme</label>
+                  <select id="fmt-color" name="formatting.color_scheme">
+                    <option value="blue">blue</option>
+                    <option value="red">red</option>
+                    <option value="green">green</option>
+                    <option value="custom">custom</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="fmt-bib">Bibliography style</label>
+                  <select id="fmt-bib" name="formatting.bibliography_style">
+                    <option value="IEEE">IEEE</option>
+                    <option value="APA">APA</option>
+                    <option value="ACM">ACM</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row two">
+                <div>
+                  <label for="fmt-size">Font size</label>
+                  <select id="fmt-size" name="formatting.font_size">
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12" selected>12</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="fmt-spacing">Line spacing</label>
+                  <select id="fmt-spacing" name="formatting.line_spacing">
+                    <option value="1.0">1.0</option>
+                    <option value="1.5" selected>1.5</option>
+                    <option value="2.0">2.0</option>
+                  </select>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset id="content-fieldset">
+              <legend>Content sections</legend>
+              <div class="checkbox-row" id="content-checkboxes">
+                <label><input type="checkbox" name="content.include_declaration" checked /> Declaration</label>
+                <label><input type="checkbox" name="content.include_certificate" checked /> Certificate</label>
+                <label><input type="checkbox" name="content.include_acknowledgments" checked /> Acknowledgments</label>
+                <label><input type="checkbox" name="content.include_abstract" checked /> Abstract</label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Assets</legend>
+              <div class="row">
+                <div>
+                  <label for="logo-path">Logo path (optional)</label>
+                  <input type="text" id="logo-path" name="assets.logo_path" placeholder="./assets/logo.png" />
+                  <p class="hint">The generator checks that this file exists when you run it locally.</p>
+                </div>
+              </div>
+            </fieldset>
+          </details>
+
+          <div class="actions">
+            <button type="button" class="primary" id="btn-download" disabled>Download config.yaml</button>
+            <button type="button" id="btn-copy" disabled>Copy to clipboard</button>
+          </div>
+          <div id="validation-status" class="status hidden" role="status"></div>
+        </form>
+
+        <div class="panel preview-wrap">
+          <h2>Preview</h2>
+          <div class="preview-toolbar">
+            <span class="hint" id="preview-hint">Edit the form to update YAML.</span>
+          </div>
+          <pre id="yaml-preview" aria-label="Generated YAML preview"></pre>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/app.js" type="module"></script>
+  </body>
+</html>

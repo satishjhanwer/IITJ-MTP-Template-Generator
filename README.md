@@ -70,7 +70,16 @@ cd IITJ-MTP-Template-Generator
 pip install -r scripts/requirements.txt
 ```
 
-#### Interactive Mode
+### Option 1: Web-based Configuration (Easiest)
+
+No command line needed! Use the **[interactive web generator](https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/web/config-generator/)** to:
+
+- Fill in your project details visually
+- Preview your `config.yaml` in real-time
+- Download the config file directly
+- Then run: `python scripts/generate.py --config config.yaml`
+
+### Option 2: Interactive CLI
 
 ```bash
 python scripts/generate.py
@@ -78,7 +87,7 @@ python scripts/generate.py
 
 Follow the prompts to enter your project details. Generation only writes the **project skeleton**; edit all `.tex` (and `.bib`) files for your real abstract, chapters, and front matter before treating any PDF as final.
 
-#### Using a Config File
+### Option 3: Using a Config File
 
 ```bash
 python scripts/generate.py --config examples/sample-proposal/config.yaml
@@ -257,10 +266,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [x] Performance optimizations (66% faster)
 - [x] Error handling with helpful messages
 - [x] Progress tracking and UX improvements
+- [x] Web-based configuration generator
 
 ### 🚧 In Progress / Planned
 
-- [ ] Web-based configuration generator
 - [ ] Multiple university templates (IIT Delhi, IISc, etc.)
 - [ ] Template customization UI
 - [ ] Multi-language support

@@ -2,9 +2,11 @@
 
 Generate professional LaTeX academic reports with ease
 
-[Simple guide (beginners)](beginners_guide){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[Quick Start](quickstart){: .btn .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[View on GitHub](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator){: .btn .fs-5 .mb-4 .mb-md-0 }
+<div style="margin-bottom: 20px;">
+  <a href="beginners_guide" style="display: inline-block; padding: 10px 16px; background-color: #0969da; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; margin-right: 10px;">Simple guide (beginners)</a>
+  <a href="quickstart" style="display: inline-block; padding: 10px 16px; background-color: #058e3f; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; margin-right: 10px;">Quick Start</a>
+  <a href="https://github.com/satishjhanwer/IITJ-MTP-Template-Generator" style="display: inline-block; padding: 10px 16px; background-color: #6e40aa; color: white; text-decoration: none; border-radius: 6px; font-weight: 500;">View on GitHub</a>
+</div>
 
 ---
 
@@ -25,6 +27,17 @@ A Python-based tool that builds a **structured LaTeX project** from simple confi
 ✅ **Zero Dependencies Option** - Works without pip  
 
 ## Quick Example
+
+### Option 1: Web-based Configuration (Easiest)
+
+No command line needed! Use the **[interactive web generator](/web/config-generator/)** to:
+
+- Fill in your project details visually
+- Preview your `config.yaml` in real-time
+- Download the config file directly
+- Then run `python scripts/generate.py --config config.yaml`
+
+### Option 2: Command Line
 
 ```bash
 # Install dependencies

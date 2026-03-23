@@ -143,6 +143,7 @@ def prepare_context(config: Dict[str, Any]) -> Dict[str, Any]:
         'INCLUDE_CERTIFICATE': config.get('content', {}).get('include_certificate', True),
         'INCLUDE_ACKNOWLEDGMENTS': config.get('content', {}).get('include_acknowledgments', True),
         'INCLUDE_ABSTRACT': config.get('content', {}).get('include_abstract', True),
+        'INCLUDE_APPENDIX': config.get('content', {}).get('include_appendix', False),
         
         # Assets
         'LOGO_PATH': config.get('assets', {}).get('logo_path', 'logo.png'),

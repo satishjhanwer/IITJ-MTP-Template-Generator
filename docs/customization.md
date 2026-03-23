@@ -50,11 +50,22 @@ Modify margins in the template:
 ```latex
 \geometry{
     paper=a4paper,
-    inner=1in,        % Left margin
-    outer=1in,        % Right margin
-    top=0.75in,       % Top margin
-    bottom=0.75in     % Bottom margin
+    left=0.75in,      % Left margin
+    right=0.75in,     % Right margin
+    top=1in,          % Top margin
+    bottom=1in        % Bottom margin
 }
+```
+
+### Font
+
+The template uses Times New Roman font. To change fonts, modify the template:
+
+```latex
+\usepackage{times}  % Times New Roman
+% Or for other fonts:
+% \usepackage{helvet}  % Helvetica
+% \usepackage{palatino}  % Palatino
 ```
 
 ### Colors

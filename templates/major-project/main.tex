@@ -20,14 +20,15 @@
 \usepackage{enumitem}
 \usepackage{times}
 \usepackage{amsmath}
+\usepackage[acronym]{glossaries}
 
 % Page geometry
 \geometry{
-    paper=a4paper,
-    left=0.75in,
-    right=0.75in,
-    top=1in,
-    bottom=1in
+  paper=a4paper,
+  left=0.75in,
+  right=0.75in,
+  top=1in,
+  bottom=1in
 }
 
 % Line spacing
@@ -37,6 +38,10 @@
 \counterwithin{table}{section}
 \counterwithin{figure}{section}
 \numberwithin{equation}{section}
+
+% Glossaries
+\makeglossaries
+\input{glossary}
 
 % Date format
 \newdateformat{monthyeardate}{\monthname[\THEMONTH], \THEYEAR}
@@ -54,6 +59,8 @@
 \newcommand{\degree}{\VAR{DEGREE}}
 \newcommand{\univname}{\VAR{UNIVERSITY}}
 \newcommand{\deptname}{\VAR{DEPARTMENT}}
+\newcommand{\suppost}{\VAR{SUPERVISOR_DESIGNATION}}
+\newcommand{\supdeptname}{\VAR{SUPERVISOR_DEPARTMENT}}
 
 \begin{document}
 
@@ -101,6 +108,16 @@
 % List of tables
 \newpage
 \listoftables
+
+% List of Abbreviations
+\BLOCK{if INCLUDE_GLOSSARY}
+\newpage
+\printglossary[type=\acronymtype,title={List of Abbreviations},nonumberlist]
+
+% List of Symbols
+\newpage
+\printglossary[title={List of Symbols},nonumberlist]
+\BLOCK{endif}
 
 % Main content
 \newpage

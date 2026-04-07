@@ -44,6 +44,7 @@ formatting:
 content:
   include_declaration: true
   include_certificate: true
+  include_glossary: true
 
 assets:
   logo_path: "./path/to/logo.png"

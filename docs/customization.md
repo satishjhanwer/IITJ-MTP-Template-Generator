@@ -267,24 +267,45 @@ Modify `titlePage.tex` to change the layout:
 \end{center}
 ```
 
-### Adding a Table of Abbreviations
+## Using the Glossary (Abbreviations & Symbols)
 
-1. Create `abbreviations.tex`:
+The major project template includes built-in support for the `glossaries` package. 
+
+### 1. Define Your Entries
+
+Open `glossary.tex` and add your acronyms and symbols:
 
 ```latex
-\section*{List of Abbreviations}
-\begin{tabular}{ll}
-API & Application Programming Interface \\
-HTML & HyperText Markup Language \\
-WCAG & Web Content Accessibility Guidelines \\
-\end{tabular}
+% Acronyms
+\newacronym{api}{API}{Application Programming Interface}
+\newacronym{html}{HTML}{HyperText Markup Language}
+
+% Symbols
+\newglossaryentry{pi}{
+    name={\ensuremath{\pi}},
+    description={The ratio of a circle's circumference to its diameter},
+    sort=pi
+}
 ```
 
-1. Include it in main file:
+### 2. Use in Text
 
 ```latex
-\newpage
-\input{abbreviations.tex}
+The \gls{api} is useful. Using the symbol \gls{pi}.
+```
+
+- `\gls{label}`: Standard usage (expands on first use)
+- `\glspl{label}`: Plural form
+- `\Gls{label}`: Capitalized first letter
+
+### 3. Compilation
+
+To generate the glossary, you must run `makeglossaries` between `pdflatex` runs:
+
+```bash
+pdflatex main.tex
+makeglossaries main
+pdflatex main.tex
 ```
 
 ### Custom Figure and Table Numbering

@@ -101,6 +101,16 @@ def collect_inputs():
         config['academic']['supervisor_department'] = get_user_input(
             "Supervisor department", default=config['academic']['department']
         )
+        
+        # Glossary option
+        choice = get_user_input("Include List of Abbreviations/Symbols (Glossary)? [Y/n]", default="Y")
+        config['content'] = {
+            'include_glossary': (choice.lower() == 'y')
+        }
+    else:
+        config['content'] = {
+            'include_glossary': False
+        }
     
     return config
 
@@ -147,6 +157,7 @@ def copy_and_process_files(template_type, config, output_dir, script_dir):
         'ASPECT_RATIO': config.get('presentation', {}).get('aspect_ratio', '16:9'),
         'ASPECT_RATIO_VALUE': '169' if config.get('presentation', {}).get('aspect_ratio', '16:9') == '16:9' else '43',
         'PRESENTATION_DATE': config.get('presentation', {}).get('presentation_date', config['dates']['submission_date']),
+        'INCLUDE_GLOSSARY': 'true' if config.get('content', {}).get('include_glossary', False) else 'false',
     }
     
     # Process all files
@@ -172,6 +183,7 @@ def copy_and_process_files(template_type, config, output_dir, script_dir):
                 processed = processed.replace('\\BLOCK{if INCLUDE_CERTIFICATE}', '')
                 processed = processed.replace('\\BLOCK{if INCLUDE_ACKNOWLEDGMENTS}', '')
                 processed = processed.replace('\\BLOCK{if INCLUDE_ABSTRACT}', '')
+                processed = processed.replace('\\BLOCK{if INCLUDE_GLOSSARY}', '')
                 processed = processed.replace('\\BLOCK{endif}', '')
                 
                 with open(dst_path, 'w', encoding='utf-8') as f:

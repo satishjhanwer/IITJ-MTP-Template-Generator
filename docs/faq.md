@@ -123,6 +123,21 @@ python scripts/generate.py --config config.yaml --output /path/to/output
    pdflatex main.tex
    ```
 
+### Q: List of Abbreviations / Symbols (Glossary) is not showing
+
+**A:** To generate the glossary, you must run the `makeglossaries` command (or the manual `makeindex` command) between `pdflatex` runs:
+
+1. Ensure `INCLUDE_GLOSSARY` is set to `true` in your config.
+2. Run the compilation sequence:
+
+   ```bash
+   pdflatex main.tex
+   makeglossaries main
+   pdflatex main.tex
+   ```
+
+If you don't have `makeglossaries`, see the instructions in the [template README](../templates/major-project/README.md) for the manual command.
+
 ### Q: Table of contents is empty or outdated
 
 **A:** Run `pdflatex` multiple times (2-3 times) to resolve cross-references.

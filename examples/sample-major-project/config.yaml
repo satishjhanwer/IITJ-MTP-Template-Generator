@@ -37,6 +37,7 @@ content:
   include_acknowledgments: true
   include_abstract: true
   include_appendix: false
+  include_glossary: true
 
 # Optional custom logo (path must exist on disk when set; leave commented to use the default placeholder)
 # assets:

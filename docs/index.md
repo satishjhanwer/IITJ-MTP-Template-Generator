@@ -68,7 +68,7 @@ pdflatex proposal.tex
 - Complete front matter (declaration, certificate, acknowledgments)
 - 7 comprehensive chapters
 - Professional formatting
-- Automatic table of contents, figures, and tables
+- Automatic table of contents, figures, tables, abbreviations, and symbols
 - IEEE-style citations
 
 ### Presentation Slides (Beamer)

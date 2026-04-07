@@ -109,6 +109,7 @@ content:
   include_acknowledgments: true
   include_abstract: true
   include_appendix: false
+  include_glossary: false
 ```
 
 All content options are boolean (true/false) and default to `true` except `include_appendix` which defaults to `false`.
@@ -118,6 +119,7 @@ All content options are boolean (true/false) and default to `true` except `inclu
 - **include_acknowledgments** (boolean, default: true): Include acknowledgments page
 - **include_abstract** (boolean, default: true): Include abstract page
 - **include_appendix** (boolean, default: false): Include appendix section (major-project only)
+- **include_glossary** (boolean, default: false): Include List of Abbreviations/Symbols (major-project only)
 
 ### Assets
 
@@ -165,6 +167,7 @@ formatting:
 content:
   include_acknowledgments: true
   include_abstract: true
+  include_glossary: false
 
 assets:
   logo_path: "./my-university-logo.png"
@@ -206,6 +209,7 @@ content:
   include_acknowledgments: true
   include_abstract: true
   include_appendix: false
+  include_glossary: true
 ```
 
 ## Validation Rules

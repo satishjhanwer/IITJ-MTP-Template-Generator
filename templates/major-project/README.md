@@ -12,6 +12,7 @@ This directory contains your generated major project report. Follow the instruct
 ├── certificate.tex           # Certificate page
 ├── acknowledgments.tex       # Acknowledgments
 ├── abstract.tex              # Abstract
+├── glossary.tex              # List of Abbreviations and Symbols
 ├── chapters/                 # Content chapters
 │   ├── introduction.tex
 │   ├── literature.tex
@@ -34,6 +35,7 @@ This directory contains your generated major project report. Follow the instruct
 3. **Certificate** (`certificate.tex`): Auto-generated, get supervisor signature
 4. **Acknowledgments** (`acknowledgments.tex`): Customize with project-specific acknowledgments
 5. **Abstract** (`abstract.tex`): Write a 150-300 word summary
+6. **Glossary** (`glossary.tex`): Define your acronyms and symbols here
 
 ### Main Chapters
 
@@ -56,9 +58,13 @@ This directory contains your generated major project report. Follow the instruct
 ```bash
 pdflatex main.tex
 bibtex main
+makeglossaries main  # Run this to generate List of Abbreviations/Symbols
 pdflatex main.tex
 pdflatex main.tex
 ```
+
+> [!NOTE]
+> If you don't have `makeglossaries` installed, you can often achieve similar results by running `pdflatex` multiple times, or manually using `makeindex -s main.ist -t main.glg -o main.gls main.glo`.
 
 ### Using latexmk (If available)
 

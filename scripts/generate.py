@@ -143,6 +143,12 @@ def collect_interactive_inputs() -> Dict[str, Any]:
     
     print("\n--- Dates ---")
     submission_date = get_user_input("Submission date (e.g., November 2024)")
+
+    # Optional content: Glossary
+    include_glossary = False
+    if project_type == 'major-project':
+        choice = get_user_input("Include List of Abbreviations/Symbols (Glossary)? [Y/n]", default="Y")
+        include_glossary = (choice.lower() == 'y')
     
     # Build configuration
     config = {
@@ -167,6 +173,9 @@ def collect_interactive_inputs() -> Dict[str, Any]:
         },
         'dates': {
             'submission_date': submission_date,
+        },
+        'content': {
+            'include_glossary': include_glossary,
         },
     }
     

@@ -45,6 +45,9 @@ env/
 *.log
 *.out
 *.toc
+*.acn
+*.glo
+*.ist
 *.synctex.gz
 *.lof
 *.lot
@@ -56,6 +59,7 @@ env/
 *.xdv
 *.dvi
 *.ps
+*.pdf
 
 # Generated outputs (keep examples)
 output/

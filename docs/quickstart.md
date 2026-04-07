@@ -110,6 +110,7 @@ pdflatex proposal.tex
 # For major project reports
 pdflatex main.tex
 bibtex main
+makeglossaries main
 pdflatex main.tex
 pdflatex main.tex
 ```

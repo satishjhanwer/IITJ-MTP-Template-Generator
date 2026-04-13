@@ -71,6 +71,7 @@ output/
 generated/
 .history
 .coverage
+settings.local.json
 
 # OS
 .DS_Store

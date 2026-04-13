@@ -41,6 +41,17 @@ pytest tests/test_generate.py -v
 pytest tests/test_generate.py::TestClassName::test_name -v
 ```
 
+### Code Quality (all configured in pyproject.toml and .flake8)
+
+```bash
+python -m black scripts/          # Format code
+python -m isort scripts/          # Sort imports
+python -m flake8 scripts/         # Lint (style + errors)
+python -m mypy scripts/           # Type check
+python -m bandit -r scripts/      # Security scan
+python -m pylint scripts/         # Deep lint (target: 9.5+/10)
+```
+
 ### LaTeX Compilation (after generation)
 
 ```bash

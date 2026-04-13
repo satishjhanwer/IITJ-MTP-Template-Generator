@@ -11,5 +11,6 @@ exclude =
     .git,
     .history
 per-file-ignores =
-    # Tests use assert statements intentionally
-    tests/*:E501
+    # Long compile-command strings in user-facing output are intentional
+    scripts/generate.py:E501
+    scripts/generate_simple.py:E501

@@ -7,10 +7,10 @@ No external dependencies required (no Jinja2, no PyYAML).
 Uses JSON for configuration and simple string replacement for templating.
 """
 
-import os
-import sys
-import shutil
 import json
+import os
+import shutil
+import sys
 
 
 def print_banner():
@@ -55,14 +55,14 @@ def collect_inputs():
 
     while True:
         choice = input("Choice [1-3]: ").strip()
-        if choice == '1':
-            project_type = 'proposal'
+        if choice == "1":
+            project_type = "proposal"
             break
-        elif choice == '2':
-            project_type = 'major-project'
+        elif choice == "2":
+            project_type = "major-project"
             break
-        elif choice == '3':
-            project_type = 'presentation'
+        elif choice == "3":
+            project_type = "presentation"
             break
         else:
             print("[ERROR] Invalid choice. Please enter 1, 2, or 3.")
@@ -70,43 +70,43 @@ def collect_inputs():
     print()
 
     config = {
-        'project': {
-            'title': get_user_input("Project title"),
-            'type': project_type,
+        "project": {
+            "title": get_user_input("Project title"),
+            "type": project_type,
         },
-        'author': {
-            'name': get_user_input("Your name"),
-            'roll_number': get_user_input("Roll number"),
-            'email': get_user_input("Email (optional)", required=False),
+        "author": {
+            "name": get_user_input("Your name"),
+            "roll_number": get_user_input("Roll number"),
+            "email": get_user_input("Email (optional)", required=False),
         },
-        'academic': {
-            'supervisor': get_user_input("Supervisor name (e.g., Dr. Jane Smith)"),
-            'co_supervisor': get_user_input("Co-supervisor (optional)", required=False),
-            'department': get_user_input("Department", default="Department of Computer Science"),
-            'university': get_user_input("University", default="Your University Name"),
-            'degree': get_user_input("Degree", default="Bachelor of Technology"),
-            'session': get_user_input("Academic session", default="2024-25"),
+        "academic": {
+            "supervisor": get_user_input("Supervisor name (e.g., Dr. Jane Smith)"),
+            "co_supervisor": get_user_input("Co-supervisor (optional)", required=False),
+            "department": get_user_input(
+                "Department", default="Department of Computer Science"
+            ),
+            "university": get_user_input("University", default="Your University Name"),
+            "degree": get_user_input("Degree", default="Bachelor of Technology"),
+            "session": get_user_input("Academic session", default="2024-25"),
         },
-        'dates': {
-            'submission_date': get_user_input("Submission date (e.g., November 2024)"),
+        "dates": {
+            "submission_date": get_user_input("Submission date (e.g., November 2024)"),
         },
     }
 
-    if project_type == 'major-project':
-        config['academic']['supervisor_designation'] = get_user_input(
+    if project_type == "major-project":
+        config["academic"]["supervisor_designation"] = get_user_input(
             "Supervisor designation", default="Professor"
         )
-        config['academic']['supervisor_department'] = get_user_input(
-            "Supervisor department", default=config['academic']['department']
+        config["academic"]["supervisor_department"] = get_user_input(
+            "Supervisor department", default=config["academic"]["department"]
         )
-        choice = get_user_input("Include List of Abbreviations/Symbols (Glossary)? [Y/n]", default="Y")
-        config['content'] = {
-            'include_glossary': (choice.lower() == 'y')
-        }
+        choice = get_user_input(
+            "Include List of Abbreviations/Symbols (Glossary)? [Y/n]", default="Y"
+        )
+        config["content"] = {"include_glossary": (choice.lower() == "y")}
     else:
-        config['content'] = {
-            'include_glossary': False
-        }
+        config["content"] = {"include_glossary": False}
 
     return config
 
@@ -116,42 +116,56 @@ def simple_replace(text, replacements):
     result = text
     for key, value in replacements.items():
         # Handle both Jinja2-style and simple placeholders
-        result = result.replace(f'\\VAR{{{key}}}', str(value))
-        result = result.replace(f'{{{{{key}}}}}', str(value))
+        result = result.replace(f"\\VAR{{{key}}}", str(value))
+        result = result.replace(f"{{{{{key}}}}}", str(value))
     return result
 
 
 def copy_and_process_files(template_type, config, output_dir, script_dir):
     """Copy and process template files."""
-    template_dir = os.path.join(script_dir, '..', 'templates', template_type)
+    template_dir = os.path.join(script_dir, "..", "templates", template_type)
 
     if not os.path.exists(template_dir):
         raise FileNotFoundError(f"Template directory not found: {template_dir}")
 
     replacements = {
-        'TITLE': config['project']['title'],
-        'AUTHOR_NAME': config['author']['name'],
-        'ROLL_NUMBER': config['author']['roll_number'],
-        'EMAIL': config['author'].get('email', ''),
-        'SUPERVISOR': config['academic']['supervisor'],
-        'CO_SUPERVISOR': config['academic'].get('co_supervisor', ''),
-        'SUPERVISOR_DESIGNATION': config['academic'].get('supervisor_designation', 'Professor'),
-        'SUPERVISOR_DEPARTMENT': config['academic'].get('supervisor_department', config['academic']['department']),
-        'DEPARTMENT': config['academic']['department'],
-        'UNIVERSITY': config['academic']['university'],
-        'DEGREE': config['academic']['degree'],
-        'SESSION': config['academic']['session'],
-        'SUBMISSION_DATE': config['dates']['submission_date'],
-        'INCLUDE_DECLARATION': 'true',
-        'INCLUDE_CERTIFICATE': 'true',
-        'INCLUDE_ACKNOWLEDGMENTS': 'true',
-        'INCLUDE_ABSTRACT': 'true',
-        'THEME': config.get('presentation', {}).get('theme', 'Madrid'),
-        'COLOR_SCHEME': config.get('presentation', {}).get('color_scheme', 'default'),
-        'ASPECT_RATIO': config.get('presentation', {}).get('aspect_ratio', '16:9'),
-        'ASPECT_RATIO_VALUE': '169' if config.get('presentation', {}).get('aspect_ratio', '16:9') == '16:9' else '43',
-        'PRESENTATION_DATE': config.get('presentation', {}).get('presentation_date', config['dates']['submission_date']),
-        'INCLUDE_GLOSSARY': 'true' if config.get('content', {}).get('include_glossary', False) else 'false',
+        "TITLE": config["project"]["title"],
+        "AUTHOR_NAME": config["author"]["name"],
+        "ROLL_NUMBER": config["author"]["roll_number"],
+        "EMAIL": config["author"].get("email", ""),
+        "SUPERVISOR": config["academic"]["supervisor"],
+        "CO_SUPERVISOR": config["academic"].get("co_supervisor", ""),
+        "SUPERVISOR_DESIGNATION": config["academic"].get(
+            "supervisor_designation", "Professor"
+        ),
+        "SUPERVISOR_DEPARTMENT": config["academic"].get(
+            "supervisor_department", config["academic"]["department"]
+        ),
+        "DEPARTMENT": config["academic"]["department"],
+        "UNIVERSITY": config["academic"]["university"],
+        "DEGREE": config["academic"]["degree"],
+        "SESSION": config["academic"]["session"],
+        "SUBMISSION_DATE": config["dates"]["submission_date"],
+        "INCLUDE_DECLARATION": "true",
+        "INCLUDE_CERTIFICATE": "true",
+        "INCLUDE_ACKNOWLEDGMENTS": "true",
+        "INCLUDE_ABSTRACT": "true",
+        "THEME": config.get("presentation", {}).get("theme", "Madrid"),
+        "COLOR_SCHEME": config.get("presentation", {}).get("color_scheme", "default"),
+        "ASPECT_RATIO": config.get("presentation", {}).get("aspect_ratio", "16:9"),
+        "ASPECT_RATIO_VALUE": (
+            "169"
+            if config.get("presentation", {}).get("aspect_ratio", "16:9") == "16:9"
+            else "43"
+        ),
+        "PRESENTATION_DATE": config.get("presentation", {}).get(
+            "presentation_date", config["dates"]["submission_date"]
+        ),
+        "INCLUDE_GLOSSARY": (
+            "true"
+            if config.get("content", {}).get("include_glossary", False)
+            else "false"
+        ),
     }
 
     for root, dirs, files in os.walk(template_dir):
@@ -162,22 +176,22 @@ def copy_and_process_files(template_type, config, output_dir, script_dir):
 
             os.makedirs(os.path.dirname(dst_path), exist_ok=True)
 
-            if file.endswith('.tex'):
-                with open(src_path, 'r', encoding='utf-8') as f:
+            if file.endswith(".tex"):
+                with open(src_path, "r", encoding="utf-8") as f:
                     content = f.read()
 
                 # Simple replacement (won't handle Jinja2 blocks perfectly)
                 processed = simple_replace(content, replacements)
 
                 # Remove Jinja2 block statements (basic cleanup)
-                processed = processed.replace('\\BLOCK{if INCLUDE_DECLARATION}', '')
-                processed = processed.replace('\\BLOCK{if INCLUDE_CERTIFICATE}', '')
-                processed = processed.replace('\\BLOCK{if INCLUDE_ACKNOWLEDGMENTS}', '')
-                processed = processed.replace('\\BLOCK{if INCLUDE_ABSTRACT}', '')
-                processed = processed.replace('\\BLOCK{if INCLUDE_GLOSSARY}', '')
-                processed = processed.replace('\\BLOCK{endif}', '')
+                processed = processed.replace("\\BLOCK{if INCLUDE_DECLARATION}", "")
+                processed = processed.replace("\\BLOCK{if INCLUDE_CERTIFICATE}", "")
+                processed = processed.replace("\\BLOCK{if INCLUDE_ACKNOWLEDGMENTS}", "")
+                processed = processed.replace("\\BLOCK{if INCLUDE_ABSTRACT}", "")
+                processed = processed.replace("\\BLOCK{if INCLUDE_GLOSSARY}", "")
+                processed = processed.replace("\\BLOCK{endif}", "")
 
-                with open(dst_path, 'w', encoding='utf-8') as f:
+                with open(dst_path, "w", encoding="utf-8") as f:
                     f.write(processed)
             else:
                 shutil.copy2(src_path, dst_path)
@@ -186,21 +200,21 @@ def copy_and_process_files(template_type, config, output_dir, script_dir):
 def generate_report(config, output_dir=None):
     """Generate report from configuration."""
     if not output_dir:
-        title_slug = config['project']['title'].lower().replace(' ', '-')
-        title_slug = ''.join(c for c in title_slug if c.isalnum() or c == '-')
-        output_dir = os.path.join('output', title_slug)
+        title_slug = config["project"]["title"].lower().replace(" ", "-")
+        title_slug = "".join(c for c in title_slug if c.isalnum() or c == "-")
+        output_dir = os.path.join("output", title_slug)
 
     os.makedirs(output_dir, exist_ok=True)
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    template_type = config['project']['type']
+    template_type = config["project"]["type"]
 
     print(f"\n[INFO] Generating {template_type} report...")
     print("   Processing template files...")
 
     copy_and_process_files(template_type, config, output_dir, script_dir)
 
-    print(f"\n[OK] Report generated successfully!")
+    print("\n[OK] Report generated successfully!")
     print(f"[INFO] Output directory: {os.path.abspath(output_dir)}")
 
     return output_dir
@@ -211,19 +225,21 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(
-        description='Generate academic reports (Simple version - no dependencies)',
-        epilog='Note: This version has limited features. For full functionality, use generate.py'
+        description="Generate academic reports (Simple version - no dependencies)",
+        epilog="Note: This version has limited features. For full functionality, use generate.py",  # noqa: E501
     )
 
     parser.add_argument(
-        '--config', '-c',
-        help='Path to JSON configuration file',
+        "--config",
+        "-c",
+        help="Path to JSON configuration file",
         type=str,
     )
 
     parser.add_argument(
-        '--output', '-o',
-        help='Output directory path',
+        "--output",
+        "-o",
+        help="Output directory path",
         type=str,
     )
 
@@ -234,7 +250,7 @@ def main():
             print(f"[ERROR] Config file not found: {args.config}")
             sys.exit(1)
 
-        with open(args.config, 'r') as f:
+        with open(args.config, "r") as f:
             config = json.load(f)
         print(f"[OK] Loaded configuration from: {args.config}")
     else:
@@ -244,34 +260,48 @@ def main():
         print("Summary:")
         print(f"   Project: {config['project']['title']}")
         print(f"   Type: {config['project']['type']}")
-        print(f"   Author: {config['author']['name']} ({config['author']['roll_number']})")
+        print(
+            f"   Author: {config['author']['name']} ({config['author']['roll_number']})"
+        )
         print(f"   Supervisor: {config['academic']['supervisor']}")
         print("=" * 60)
 
         confirm = input("\nGenerate report with these details? [Y/n]: ").strip().lower()
-        if confirm and confirm != 'y':
+        if confirm and confirm != "y":
             print("[ERROR] Generation cancelled.")
             sys.exit(0)
 
     output_dir = generate_report(config, args.output)
 
     print("\n[INFO] Important:")
-    print("   This is a starter LaTeX project with placeholders ([TODO] / % TODO in .tex files).")
-    print("   A PDF compiled before you replace that text shows layout only—not your final report.")
+    print(
+        "   This is a starter LaTeX project with placeholders ([TODO] / % TODO in .tex files)."
+    )  # noqa: E501
+    print(
+        "   A PDF compiled before you replace that text shows layout only—not your final report."
+    )  # noqa: E501
     print("\n[INFO] Next steps:")
     print(f"   1. Edit the .tex files in {output_dir} to add your content")
 
-    if config['project']['type'] == 'proposal':
-        print(f"   2. Compile with: cd {output_dir} && pdflatex proposal.tex && bibtex proposal && pdflatex proposal.tex && pdflatex proposal.tex")
-    elif config['project']['type'] == 'presentation':
-        print(f"   2. Compile with: cd {output_dir} && pdflatex slides.tex && pdflatex slides.tex")
+    if config["project"]["type"] == "proposal":
+        print(
+            f"   2. Compile with: cd {output_dir} && pdflatex proposal.tex && bibtex proposal && pdflatex proposal.tex && pdflatex proposal.tex"
+        )  # noqa: E501
+    elif config["project"]["type"] == "presentation":
+        print(
+            f"   2. Compile with: cd {output_dir} && pdflatex slides.tex && pdflatex slides.tex"
+        )  # noqa: E501
     else:
-        print(f"   2. Compile with: cd {output_dir} && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex")
+        print(
+            f"   2. Compile with: cd {output_dir} && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex"
+        )  # noqa: E501
 
-    print("\n[INFO] Note: For advanced features (YAML config, better templating), use generate.py")
+    print(
+        "\n[INFO] Note: For advanced features (YAML config, better templating), use generate.py"
+    )  # noqa: E501
     print("   Install dependencies: pip install -r scripts/requirements.txt")
     print("\n")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

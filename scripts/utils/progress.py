@@ -3,11 +3,11 @@
 This module provides progress indicators for long-running operations.
 """
 
+import functools
 import sys
 import time
-import functools
-from typing import Optional, Callable
 from contextlib import contextmanager
+from typing import Any, Callable, Generator, Optional
 
 
 class ProgressBar:
@@ -27,19 +27,19 @@ class ProgressBar:
         self.width = width
         self.start_time = time.time()
 
-    def update(self, step: int = 1):
+    def update(self, step: int = 1) -> None:
         """Update progress by specified steps."""
         self.current = min(self.current + step, self.total)
         self._display()
 
-    def _display(self):
+    def _display(self) -> None:
         """Display the progress bar."""
         if self.total == 0:
             return
 
         percent = self.current / self.total
         filled = int(self.width * percent)
-        bar = '█' * filled + '░' * (self.width - filled)
+        bar_str = "█" * filled + "░" * (self.width - filled)
 
         elapsed = time.time() - self.start_time
         if self.current > 0:
@@ -48,7 +48,7 @@ class ProgressBar:
         else:
             eta_str = "ETA: --"
 
-        output = f"\r{self.description} [{bar}] {int(percent * 100)}% ({self.current}/{self.total}) {eta_str}"
+        output = f"\r{self.description} [{bar_str}] {int(percent * 100)}% ({self.current}/{self.total}) {eta_str}"  # noqa: E501
         sys.stdout.write(output)
         sys.stdout.flush()
 
@@ -56,7 +56,7 @@ class ProgressBar:
             sys.stdout.write("\n")
             sys.stdout.flush()
 
-    def finish(self):
+    def finish(self) -> None:
         """Mark progress as complete."""
         self.current = self.total
         self._display()
@@ -65,7 +65,7 @@ class ProgressBar:
 class Spinner:
     """Simple spinner for indeterminate operations."""
 
-    FRAMES = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
+    FRAMES = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
 
     def __init__(self, description: str = ""):
         """Initialize spinner.
@@ -77,24 +77,24 @@ class Spinner:
         self.frame_index = 0
         self.running = False
 
-    def start(self):
+    def start(self) -> None:
         """Start the spinner."""
         self.running = True
         self._display()
 
-    def stop(self, final_message: Optional[str] = None):
+    def stop(self, final_message: Optional[str] = None) -> None:
         """Stop the spinner.
 
         Args:
             final_message: Optional message to display when stopping
         """
         self.running = False
-        sys.stdout.write('\r' + ' ' * 80 + '\r')
+        sys.stdout.write("\r" + " " * 80 + "\r")
         if final_message:
             print(final_message)
         sys.stdout.flush()
 
-    def _display(self):
+    def _display(self) -> None:
         """Display the spinner frame."""
         if not self.running:
             return
@@ -106,7 +106,9 @@ class Spinner:
 
 
 @contextmanager
-def progress_context(total: int, description: str = "Processing"):
+def progress_context(
+    total: int, description: str = "Processing"
+) -> Generator[ProgressBar, None, None]:
     """Context manager for progress tracking.
 
     Args:
@@ -130,7 +132,9 @@ def progress_context(total: int, description: str = "Processing"):
 
 
 @contextmanager
-def spinner_context(description: str = "Processing"):
+def spinner_context(
+    description: str = "Processing",
+) -> Generator[Spinner, None, None]:
     """Context manager for spinner.
 
     Args:
@@ -152,7 +156,9 @@ def spinner_context(description: str = "Processing"):
         spinner.stop()
 
 
-def with_progress(description: str = "Processing"):
+def with_progress(
+    description: str = "Processing",
+) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
     """Decorator for functions that should show progress.
 
     Args:
@@ -164,12 +170,15 @@ def with_progress(description: str = "Processing"):
             # Function implementation
             pass
     """
-    def decorator(func: Callable):
+
+    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
         @functools.wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             with spinner_context(description):
                 result = func(*args, **kwargs)
             print(f"[OK] {description} complete")
             return result
+
         return wrapper
+
     return decorator

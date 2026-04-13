@@ -6,15 +6,16 @@ Generate professional LaTeX academic reports from user inputs.
 Supports proposal reports and major project reports.
 """
 
-import os
-import sys
-import shutil
 import argparse
-from typing import Dict, Any, Optional
+import os
+import shutil
+import sys
+from typing import Any, Dict, Optional
 
 try:
     import yaml
     from jinja2 import Environment, FileSystemLoader
+
     DEPENDENCIES_AVAILABLE = True
 except ImportError:
     DEPENDENCIES_AVAILABLE = False
@@ -23,25 +24,24 @@ except ImportError:
     print("Or use the zero-dependency version: python scripts/generate_simple.py")
     sys.exit(1)
 
-# Add repo root so `import scripts.utils.*` works; add utils/ for flat imports (validators, etc.)
+# Add repo root for `scripts.utils.*` and utils/ for flat imports.
 _script_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(_script_dir, '..'))
-sys.path.insert(0, os.path.join(_script_dir, 'utils'))
+sys.path.insert(0, os.path.join(_script_dir, ".."))
+sys.path.insert(0, os.path.join(_script_dir, "utils"))
 
-from validators import validate_config, validate_email
-from template_engine import prepare_context
-
+from template_engine import prepare_context  # noqa: E402
+from validators import validate_config, validate_email  # noqa: E402
 
 DEFAULTS = {
-    'university': 'Your University Name',
-    'department': 'Department of Computer Science and Engineering',
-    'degree': 'Bachelor of Technology',
-    'session': '2024-25',
-    'supervisor_designation': 'Professor',
+    "university": "Your University Name",
+    "department": "Department of Computer Science and Engineering",
+    "degree": "Bachelor of Technology",
+    "session": "2024-25",
+    "supervisor_designation": "Professor",
 }
 
 
-def print_banner():
+def print_banner() -> None:
     """Print welcome banner."""
     print("\n" + "=" * 60)
     print("IITJ MTP Template Generator")
@@ -49,7 +49,9 @@ def print_banner():
     print()
 
 
-def get_user_input(prompt: str, default: Optional[str] = None, required: bool = True) -> str:
+def get_user_input(
+    prompt: str, default: Optional[str] = None, required: bool = True
+) -> str:
     """Get user input with optional default value.
 
     Args:
@@ -93,14 +95,14 @@ def collect_interactive_inputs() -> Dict[str, Any]:
 
     while True:
         choice = input("Choice [1-3]: ").strip()
-        if choice == '1':
-            project_type = 'proposal'
+        if choice == "1":
+            project_type = "proposal"
             break
-        elif choice == '2':
-            project_type = 'major-project'
+        elif choice == "2":
+            project_type = "major-project"
             break
-        elif choice == '3':
-            project_type = 'presentation'
+        elif choice == "3":
+            project_type = "presentation"
             break
         else:
             print("[ERROR] Invalid choice. Please enter 1, 2, or 3.")
@@ -121,54 +123,62 @@ def collect_interactive_inputs() -> Dict[str, Any]:
 
     print("\n--- Academic Information ---")
     supervisor = get_user_input("Supervisor name (e.g., Dr. Jane Smith)")
-    co_supervisor = get_user_input("Co-supervisor (optional, press Enter to skip)", required=False)
+    co_supervisor = get_user_input(
+        "Co-supervisor (optional, press Enter to skip)", required=False
+    )
 
-    department = get_user_input("Department", default=DEFAULTS['department'])
-    university = get_user_input("University", default=DEFAULTS['university'])
-    degree = get_user_input("Degree", default=DEFAULTS['degree'])
-    session = get_user_input("Academic session", default=DEFAULTS['session'])
+    department = get_user_input("Department", default=DEFAULTS["department"])
+    university = get_user_input("University", default=DEFAULTS["university"])
+    degree = get_user_input("Degree", default=DEFAULTS["degree"])
+    session = get_user_input("Academic session", default=DEFAULTS["session"])
 
-    if project_type == 'major-project':
+    if project_type == "major-project":
         print("\n--- Supervisor Details (for certificate) ---")
-        supervisor_designation = get_user_input("Supervisor designation", default=DEFAULTS['supervisor_designation'])
-        supervisor_department = get_user_input("Supervisor department", default=department)
+        supervisor_designation = get_user_input(
+            "Supervisor designation", default=DEFAULTS["supervisor_designation"]
+        )
+        supervisor_department = get_user_input(
+            "Supervisor department", default=department
+        )
     else:
-        supervisor_designation = DEFAULTS['supervisor_designation']
+        supervisor_designation = DEFAULTS["supervisor_designation"]
         supervisor_department = department
 
     print("\n--- Dates ---")
     submission_date = get_user_input("Submission date (e.g., November 2024)")
 
     include_glossary = False
-    if project_type == 'major-project':
-        choice = get_user_input("Include List of Abbreviations/Symbols (Glossary)? [Y/n]", default="Y")
-        include_glossary = (choice.lower() == 'y')
+    if project_type == "major-project":
+        choice = get_user_input(
+            "Include List of Abbreviations/Symbols (Glossary)? [Y/n]", default="Y"
+        )
+        include_glossary = choice.lower() == "y"
 
     config = {
-        'project': {
-            'title': title,
-            'type': project_type,
+        "project": {
+            "title": title,
+            "type": project_type,
         },
-        'author': {
-            'name': author_name,
-            'roll_number': roll_number,
-            'email': email,
+        "author": {
+            "name": author_name,
+            "roll_number": roll_number,
+            "email": email,
         },
-        'academic': {
-            'supervisor': supervisor,
-            'co_supervisor': co_supervisor,
-            'supervisor_designation': supervisor_designation,
-            'supervisor_department': supervisor_department,
-            'department': department,
-            'university': university,
-            'degree': degree,
-            'session': session,
+        "academic": {
+            "supervisor": supervisor,
+            "co_supervisor": co_supervisor,
+            "supervisor_designation": supervisor_designation,
+            "supervisor_department": supervisor_department,
+            "department": department,
+            "university": university,
+            "degree": degree,
+            "session": session,
         },
-        'dates': {
-            'submission_date': submission_date,
+        "dates": {
+            "submission_date": submission_date,
         },
-        'content': {
-            'include_glossary': include_glossary,
+        "content": {
+            "include_glossary": include_glossary,
         },
     }
 
@@ -184,12 +194,12 @@ def load_config_file(config_path: str) -> Dict[str, Any]:
     Returns:
         Configuration dictionary
     """
-    with open(config_path, 'r', encoding='utf-8') as f:
-        config = yaml.safe_load(f)
+    with open(config_path, "r", encoding="utf-8") as f:
+        config: Dict[str, Any] = yaml.safe_load(f)
     return config
 
 
-def copy_template_files(template_type: str, output_dir: str, script_dir: str):
+def copy_template_files(template_type: str, output_dir: str, script_dir: str) -> None:
     """Copy non-.tex template files to output directory.
 
     Args:
@@ -197,14 +207,14 @@ def copy_template_files(template_type: str, output_dir: str, script_dir: str):
         output_dir: Output directory path
         script_dir: Script directory path
     """
-    template_dir = os.path.join(script_dir, '..', 'templates', template_type)
+    template_dir = os.path.join(script_dir, "..", "templates", template_type)
 
     if not os.path.exists(template_dir):
         raise FileNotFoundError(f"Template directory not found: {template_dir}")
 
     for root, dirs, files in os.walk(template_dir):
         for file in files:
-            if file.endswith('.tex'):
+            if file.endswith(".tex"):
                 continue
 
             src_path = os.path.join(root, file)
@@ -215,7 +225,9 @@ def copy_template_files(template_type: str, output_dir: str, script_dir: str):
             shutil.copy2(src_path, dst_path)
 
 
-def render_templates(template_type: str, context: Dict[str, Any], output_dir: str, script_dir: str):
+def render_templates(
+    template_type: str, context: Dict[str, Any], output_dir: str, script_dir: str
+) -> None:
     """Render all .tex template files with Jinja2.
 
     Args:
@@ -224,33 +236,35 @@ def render_templates(template_type: str, context: Dict[str, Any], output_dir: st
         output_dir: Output directory path
         script_dir: Script directory path
     """
-    template_dir = os.path.join(script_dir, '..', 'templates', template_type)
+    template_dir = os.path.join(script_dir, "..", "templates", template_type)
 
-    env = Environment(
+    env = Environment(  # nosec B701
         loader=FileSystemLoader(template_dir),
-        block_start_string='\\BLOCK{',
-        block_end_string='}',
-        variable_start_string='\\VAR{',
-        variable_end_string='}',
-        comment_start_string='\\#{',
-        comment_end_string='}',
+        block_start_string="\\BLOCK{",
+        block_end_string="}",
+        variable_start_string="\\VAR{",
+        variable_end_string="}",
+        comment_start_string="\\#{",
+        comment_end_string="}",
         trim_blocks=True,
         lstrip_blocks=True,
     )
 
     for root, dirs, files in os.walk(template_dir):
         for file in files:
-            if file.endswith('.tex'):
+            if file.endswith(".tex"):
                 src_path = os.path.join(root, file)
                 rel_path = os.path.relpath(src_path, template_dir)
                 dst_path = os.path.join(output_dir, rel_path)
 
-                template_rel_path = os.path.relpath(src_path, template_dir).replace('\\', '/')
+                template_rel_path = os.path.relpath(src_path, template_dir).replace(
+                    "\\", "/"
+                )
                 template = env.get_template(template_rel_path)
                 rendered = template.render(**context)
 
                 os.makedirs(os.path.dirname(dst_path), exist_ok=True)
-                with open(dst_path, 'w', encoding='utf-8') as f:
+                with open(dst_path, "w", encoding="utf-8") as f:
                     f.write(rendered)
 
 
@@ -272,16 +286,16 @@ def generate_report(config: Dict[str, Any], output_dir: Optional[str] = None) ->
         sys.exit(1)
 
     if not output_dir:
-        title_slug = config['project']['title'].lower().replace(' ', '-')
-        title_slug = ''.join(c for c in title_slug if c.isalnum() or c == '-')
-        output_dir = os.path.join('output', title_slug)
+        title_slug = config["project"]["title"].lower().replace(" ", "-")
+        title_slug = "".join(c for c in title_slug if c.isalnum() or c == "-")
+        output_dir = os.path.join("output", title_slug)
 
     os.makedirs(output_dir, exist_ok=True)
 
-    if config['project']['type'] == 'presentation':
-        extract_config = config.get('presentation', {})
-        if extract_config.get('extract_from_report', False):
-            report_path = extract_config.get('report_path', '')
+    if config["project"]["type"] == "presentation":
+        extract_config = config.get("presentation", {})
+        if extract_config.get("extract_from_report", False):
+            report_path = extract_config.get("report_path", "")
 
             if report_path and not os.path.isabs(report_path):
                 report_path = os.path.abspath(report_path)
@@ -289,11 +303,14 @@ def generate_report(config: Dict[str, Any], output_dir: Optional[str] = None) ->
             if report_path and os.path.exists(report_path):
                 try:
                     print(f"\n[INFO] Extracting content from: {report_path}")
-                    from scripts.utils.content_extractor import extract_content_from_report
+                    from scripts.utils.content_extractor import (
+                        extract_content_from_report,
+                    )
+
                     extracted = extract_content_from_report(report_path)
 
                     if extracted:
-                        config['extracted_content'] = extracted
+                        config["extracted_content"] = extracted
                         print("[OK] Content extracted successfully")
                     else:
                         print("[WARNING] Content extraction returned no data")
@@ -306,7 +323,7 @@ def generate_report(config: Dict[str, Any], output_dir: Optional[str] = None) ->
                 print("   Generating presentation with TODO placeholders")
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    template_type = config['project']['type']
+    template_type = config["project"]["type"]
 
     print(f"\n[INFO] Generating {template_type} report...")
 
@@ -318,16 +335,16 @@ def generate_report(config: Dict[str, Any], output_dir: Optional[str] = None) ->
     print("   Rendering LaTeX templates...")
     render_templates(template_type, context, output_dir, script_dir)
 
-    print(f"\n[OK] Report generated successfully!")
+    print("\n[OK] Report generated successfully!")
     print(f"[INFO] Output directory: {os.path.abspath(output_dir)}")
 
     return output_dir
 
 
-def main():
+def main() -> None:
     """Main entry point."""
     parser = argparse.ArgumentParser(
-        description='Generate professional LaTeX academic reports',
+        description="Generate professional LaTeX academic reports",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -339,18 +356,20 @@ Examples:
 
   # Specify output directory
   python scripts/generate.py --config config.yaml --output my-report
-        """
+        """,
     )
 
     parser.add_argument(
-        '--config', '-c',
-        help='Path to YAML configuration file',
+        "--config",
+        "-c",
+        help="Path to YAML configuration file",
         type=str,
     )
 
     parser.add_argument(
-        '--output', '-o',
-        help='Output directory path',
+        "--output",
+        "-o",
+        help="Output directory path",
         type=str,
     )
 
@@ -370,32 +389,44 @@ Examples:
         print("Summary:")
         print(f"   Project: {config['project']['title']}")
         print(f"   Type: {config['project']['type']}")
-        print(f"   Author: {config['author']['name']} ({config['author']['roll_number']})")
+        print(
+            f"   Author: {config['author']['name']} ({config['author']['roll_number']})"
+        )
         print(f"   Supervisor: {config['academic']['supervisor']}")
         print("=" * 60)
 
         confirm = input("\nGenerate report with these details? [Y/n]: ").strip().lower()
-        if confirm and confirm != 'y':
+        if confirm and confirm != "y":
             print("[ERROR] Generation cancelled.")
             sys.exit(0)
 
     output_dir = generate_report(config, args.output)
 
     print("\n[INFO] Important:")
-    print("   This is a starter LaTeX project with placeholders ([TODO] / % TODO in .tex files).")
-    print("   A PDF compiled before you replace that text shows layout only—not your final report.")
+    print(
+        "   This is a starter LaTeX project with placeholders ([TODO] / % TODO in .tex files)."
+    )  # noqa: E501
+    print(
+        "   A PDF compiled before you replace that text shows layout only—not your final report."
+    )  # noqa: E501
     print("\n[INFO] Next steps:")
     print(f"   1. Edit the .tex files in {output_dir} to add your content")
 
-    if config['project']['type'] == 'proposal':
-        print(f"   2. Compile with: cd {output_dir} && pdflatex proposal.tex && bibtex proposal && pdflatex proposal.tex && pdflatex proposal.tex")
-    elif config['project']['type'] == 'presentation':
-        print(f"   2. Compile with: cd {output_dir} && pdflatex slides.tex && pdflatex slides.tex")
+    if config["project"]["type"] == "proposal":
+        print(
+            f"   2. Compile with: cd {output_dir} && pdflatex proposal.tex && bibtex proposal && pdflatex proposal.tex && pdflatex proposal.tex"
+        )  # noqa: E501
+    elif config["project"]["type"] == "presentation":
+        print(
+            f"   2. Compile with: cd {output_dir} && pdflatex slides.tex && pdflatex slides.tex"
+        )  # noqa: E501
     else:
-        print(f"   2. Compile with: cd {output_dir} && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex")
+        print(
+            f"   2. Compile with: cd {output_dir} && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex"
+        )  # noqa: E501
 
     print("\n")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -10,8 +10,12 @@ from typing import List, Optional
 class GeneratorError(Exception):
     """Base exception for generator errors."""
 
-    def __init__(self, message: str, suggestions: Optional[List[str]] = None,
-                 doc_link: Optional[str] = None):
+    def __init__(
+        self,
+        message: str,
+        suggestions: Optional[List[str]] = None,
+        doc_link: Optional[str] = None,
+    ):
         """Initialize error with message, suggestions, and documentation link.
 
         Args:
@@ -41,21 +45,25 @@ class GeneratorError(Exception):
 
 class ConfigurationError(GeneratorError):
     """Configuration-related errors."""
+
     pass
 
 
 class TemplateError(GeneratorError):
     """Template-related errors."""
+
     pass
 
 
 class FileError(GeneratorError):
     """File operation errors."""
+
     pass
 
 
 class ValidationError(GeneratorError):
     """Validation errors."""
+
     pass
 
 
@@ -67,9 +75,9 @@ def config_file_not_found(path: str) -> ConfigurationError:
             "Check that the file path is correct",
             "Ensure the file exists in the specified location",
             "Try using an absolute path instead of relative",
-            "Run in interactive mode: python scripts/generate.py"
+            "Run in interactive mode: python scripts/generate.py",
         ],
-        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/input-schema"
+        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/input-schema",  # noqa: E501
     )
 
 
@@ -81,9 +89,9 @@ def invalid_yaml_syntax(path: str, error: str) -> ConfigurationError:
             "Check for proper indentation (use spaces, not tabs)",
             "Ensure all strings with special characters are quoted",
             "Validate your YAML at https://www.yamllint.com/",
-            "Compare with example configs in examples/ directory"
+            "Compare with example configs in examples/ directory",
         ],
-        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/quickstart"
+        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/quickstart",  # noqa: E501
     )
 
 
@@ -93,10 +101,10 @@ def missing_required_field(field: str, section: str) -> ValidationError:
         f"Missing required field '{field}' in '{section}' section",
         suggestions=[
             f"Add '{field}' to your configuration file",
-            f"Check the example configs in examples/ directory",
-            "Refer to the input schema documentation for required fields"
+            "Check the example configs in examples/ directory",
+            "Refer to the input schema documentation for required fields",
         ],
-        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/input-schema"
+        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/input-schema",  # noqa: E501
     )
 
 
@@ -107,9 +115,9 @@ def invalid_project_type(provided: str) -> ValidationError:
         suggestions=[
             "Valid types are: 'proposal', 'major-project', 'presentation'",
             "Check your config file's 'project.type' field",
-            "Use interactive mode to select the correct type"
+            "Use interactive mode to select the correct type",
         ],
-        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/quickstart"
+        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/quickstart",  # noqa: E501
     )
 
 
@@ -121,9 +129,9 @@ def template_not_found(template_type: str, path: str) -> TemplateError:
             "Ensure you're running the script from the project root",
             "Check that templates/ directory exists",
             "Verify the repository is complete (not corrupted)",
-            "Try re-cloning the repository"
+            "Try re-cloning the repository",
         ],
-        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/"
+        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/",
     )
 
 
@@ -134,8 +142,8 @@ def output_directory_exists(path: str) -> FileError:
         suggestions=[
             "Remove or rename the existing directory",
             "Specify a different output directory with --output flag",
-            "Backup the existing directory if it contains important work"
-        ]
+            "Backup the existing directory if it contains important work",
+        ],
     )
 
 
@@ -147,9 +155,9 @@ def latex_compilation_failed(error: str) -> GeneratorError:
             "Check the LaTeX log file for detailed errors",
             "Ensure LaTeX is installed (TeX Live, MiKTeX, or MacTeX)",
             "Verify all required LaTeX packages are installed",
-            "Try compiling manually to see the full error output"
+            "Try compiling manually to see the full error output",
         ],
-        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/faq"
+        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/faq",
     )
 
 
@@ -161,7 +169,7 @@ def content_extraction_failed(report_path: str, error: str) -> GeneratorError:
             "Verify the report file is valid LaTeX",
             "Check that the file path is correct",
             "Ensure the report uses standard section names",
-            "Try generating without extraction (set extract_from_report: false)"
+            "Try generating without extraction (set extract_from_report: false)",
         ],
-        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/content-extraction"
+        doc_link="https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/content-extraction",  # noqa: E501
     )

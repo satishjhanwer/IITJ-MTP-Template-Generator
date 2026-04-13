@@ -5,11 +5,16 @@ reports to automatically populate presentation slides.
 """
 
 import os
-from typing import Dict, List, Optional, Any
+from typing import Any, Dict, List, Optional
+
 from .latex_parser import (
-    extract_section, extract_subsection, extract_environment,
-    extract_itemize_list, extract_first_paragraph, extract_chapter,
-    clean_latex
+    clean_latex,
+    extract_chapter,
+    extract_environment,
+    extract_first_paragraph,
+    extract_itemize_list,
+    extract_section,
+    extract_subsection,
 )
 
 
@@ -28,7 +33,7 @@ class ContentExtractor:
         if not os.path.exists(report_path):
             raise FileNotFoundError(f"Report not found: {report_path}")
 
-        with open(report_path, 'r', encoding='utf-8', errors='ignore') as f:
+        with open(report_path, "r", encoding="utf-8", errors="ignore") as f:
             self.content = f.read()
 
         self.report_path = report_path
@@ -41,11 +46,11 @@ class ContentExtractor:
             Dictionary with extracted content for each section
         """
         return {
-            'introduction': self.extract_introduction(),
-            'objectives': self.extract_objectives(),
-            'methodology': self.extract_methodology(),
-            'results': self.extract_results(),
-            'conclusion': self.extract_conclusion(),
+            "introduction": self.extract_introduction(),
+            "objectives": self.extract_objectives(),
+            "methodology": self.extract_methodology(),
+            "results": self.extract_results(),
+            "conclusion": self.extract_conclusion(),
         }
 
     def extract_introduction(self) -> Dict[str, str]:
@@ -54,35 +59,35 @@ class ContentExtractor:
         Returns:
             Dictionary with motivation and problem statement
         """
-        intro_content = extract_section(self.content, 'Introduction')
+        intro_content = extract_section(self.content, "Introduction")
         if not intro_content:
-            intro_content = extract_chapter(self.content, 'Introduction')
+            intro_content = extract_chapter(self.content, "Introduction")
 
         if not intro_content:
-            abstract = extract_environment(self.content, 'abstract')
+            abstract = extract_environment(self.content, "abstract")
             if abstract:
                 return {
-                    'motivation': clean_latex(abstract),
-                    'problem_statement': '',
+                    "motivation": clean_latex(abstract),
+                    "problem_statement": "",
                 }
             return {}
 
-        motivation = extract_subsection(intro_content, 'Motivation')
+        motivation = extract_subsection(intro_content, "Motivation")
         if not motivation:
             motivation = extract_first_paragraph(intro_content, max_length=400)
         else:
             motivation = extract_first_paragraph(motivation, max_length=400)
 
-        problem = extract_subsection(intro_content, 'Problem Statement')
+        problem = extract_subsection(intro_content, "Problem Statement")
         if not problem:
-            problem = extract_subsection(intro_content, 'Problem')
+            problem = extract_subsection(intro_content, "Problem")
 
         if problem:
             problem = extract_first_paragraph(problem, max_length=300)
 
         return {
-            'motivation': motivation,
-            'problem_statement': problem or '',
+            "motivation": motivation,
+            "problem_statement": problem or "",
         }
 
     def extract_objectives(self) -> List[str]:
@@ -91,12 +96,12 @@ class ContentExtractor:
         Returns:
             List of objective strings
         """
-        obj_content = extract_section(self.content, 'Objectives')
+        obj_content = extract_section(self.content, "Objectives")
         if not obj_content:
-            obj_content = extract_subsection(self.content, 'Objectives')
+            obj_content = extract_subsection(self.content, "Objectives")
 
         if not obj_content:
-            for name in ['Research Objectives', 'Project Objectives', 'Goals']:
+            for name in ["Research Objectives", "Project Objectives", "Goals"]:
                 obj_content = extract_section(self.content, name)
                 if obj_content:
                     break
@@ -113,12 +118,12 @@ class ContentExtractor:
         Returns:
             Dictionary with methodology overview and key points
         """
-        method_content = extract_section(self.content, 'Methodology')
+        method_content = extract_section(self.content, "Methodology")
         if not method_content:
-            method_content = extract_chapter(self.content, 'Methodology')
+            method_content = extract_chapter(self.content, "Methodology")
 
         if not method_content:
-            for name in ['Proposed Solution', 'Approach', 'Design', 'Implementation']:
+            for name in ["Proposed Solution", "Approach", "Design", "Implementation"]:
                 method_content = extract_section(self.content, name)
                 if method_content:
                     break
@@ -129,22 +134,22 @@ class ContentExtractor:
         overview = extract_first_paragraph(method_content, max_length=400)
 
         approaches = []
-        approach_section = extract_subsection(method_content, 'Approach')
+        approach_section = extract_subsection(method_content, "Approach")
         if approach_section:
             approaches = extract_itemize_list(approach_section)[:3]
 
         technologies = []
-        tech_section = extract_subsection(method_content, 'Technologies')
+        tech_section = extract_subsection(method_content, "Technologies")
         if not tech_section:
-            tech_section = extract_subsection(method_content, 'Tools')
+            tech_section = extract_subsection(method_content, "Tools")
 
         if tech_section:
             technologies = extract_itemize_list(tech_section)[:5]
 
         return {
-            'overview': overview,
-            'approaches': approaches,
-            'technologies': technologies,
+            "overview": overview,
+            "approaches": approaches,
+            "technologies": technologies,
         }
 
     def extract_results(self) -> Dict[str, Any]:
@@ -153,12 +158,12 @@ class ContentExtractor:
         Returns:
             Dictionary with implementation and evaluation content
         """
-        results_content = extract_section(self.content, 'Results')
+        results_content = extract_section(self.content, "Results")
         if not results_content:
-            results_content = extract_chapter(self.content, 'Results')
+            results_content = extract_chapter(self.content, "Results")
 
         if not results_content:
-            for name in ['Implementation', 'Evaluation', 'Experiments']:
+            for name in ["Implementation", "Evaluation", "Experiments"]:
                 results_content = extract_section(self.content, name)
                 if results_content:
                     break
@@ -166,21 +171,21 @@ class ContentExtractor:
         if not results_content:
             return {}
 
-        impl_section = extract_subsection(results_content, 'Implementation')
+        impl_section = extract_subsection(results_content, "Implementation")
         if impl_section:
             implementation = extract_itemize_list(impl_section)[:4]
         else:
             implementation = []
 
-        eval_section = extract_subsection(results_content, 'Evaluation')
+        eval_section = extract_subsection(results_content, "Evaluation")
         if eval_section:
             evaluation = extract_first_paragraph(eval_section, max_length=300)
         else:
             evaluation = extract_first_paragraph(results_content, max_length=300)
 
         return {
-            'implementation': implementation,
-            'evaluation': evaluation,
+            "implementation": implementation,
+            "evaluation": evaluation,
         }
 
     def extract_conclusion(self) -> Dict[str, Any]:
@@ -189,9 +194,9 @@ class ContentExtractor:
         Returns:
             Dictionary with summary and future work
         """
-        concl_content = extract_section(self.content, 'Conclusion')
+        concl_content = extract_section(self.content, "Conclusion")
         if not concl_content:
-            concl_content = extract_chapter(self.content, 'Conclusion')
+            concl_content = extract_chapter(self.content, "Conclusion")
 
         if not concl_content:
             return {}
@@ -199,16 +204,16 @@ class ContentExtractor:
         summary = extract_first_paragraph(concl_content, max_length=400)
 
         future_work = []
-        future_section = extract_subsection(concl_content, 'Future Work')
+        future_section = extract_subsection(concl_content, "Future Work")
         if not future_section:
-            future_section = extract_subsection(concl_content, 'Future Scope')
+            future_section = extract_subsection(concl_content, "Future Scope")
 
         if future_section:
             future_work = extract_itemize_list(future_section)[:4]
 
         return {
-            'summary': summary,
-            'future_work': future_work,
+            "summary": summary,
+            "future_work": future_work,
         }
 
 

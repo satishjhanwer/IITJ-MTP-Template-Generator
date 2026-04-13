@@ -6,7 +6,7 @@ This module provides utilities for parallel file copying and processing.
 import os
 import shutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import List, Tuple, Callable, Optional
+from typing import Callable, List, Optional, Tuple
 
 
 def copy_file_with_progress(src: str, dst: str) -> Tuple[str, bool]:
@@ -28,9 +28,11 @@ def copy_file_with_progress(src: str, dst: str) -> Tuple[str, bool]:
         return (os.path.basename(src), False)
 
 
-def copy_files_parallel(file_pairs: List[Tuple[str, str]],
-                       max_workers: Optional[int] = None,
-                       progress_callback: Optional[Callable] = None) -> int:
+def copy_files_parallel(
+    file_pairs: List[Tuple[str, str]],
+    max_workers: Optional[int] = None,
+    progress_callback: Optional[Callable] = None,
+) -> int:
     """Copy multiple files in parallel.
 
     Args:
@@ -70,8 +72,9 @@ def copy_files_parallel(file_pairs: List[Tuple[str, str]],
     return success_count
 
 
-def get_files_to_copy(src_dir: str, dst_dir: str,
-                     exclude_patterns: Optional[List[str]] = None) -> List[Tuple[str, str]]:
+def get_files_to_copy(
+    src_dir: str, dst_dir: str, exclude_patterns: Optional[List[str]] = None
+) -> List[Tuple[str, str]]:
     """Get list of files to copy from source to destination.
 
     Args:
@@ -94,7 +97,7 @@ def get_files_to_copy(src_dir: str, dst_dir: str,
 
             src_file = os.path.join(root, file)
 
-            if rel_path == '.':
+            if rel_path == ".":
                 dst_file = os.path.join(dst_dir, file)
             else:
                 dst_file = os.path.join(dst_dir, rel_path, file)
@@ -104,10 +107,13 @@ def get_files_to_copy(src_dir: str, dst_dir: str,
     return file_pairs
 
 
-def copy_directory_parallel(src_dir: str, dst_dir: str,
-                           exclude_patterns: Optional[List[str]] = None,
-                           max_workers: Optional[int] = None,
-                           progress_callback: Optional[Callable] = None) -> int:
+def copy_directory_parallel(
+    src_dir: str,
+    dst_dir: str,
+    exclude_patterns: Optional[List[str]] = None,
+    max_workers: Optional[int] = None,
+    progress_callback: Optional[Callable] = None,
+) -> int:
     """Copy entire directory in parallel.
 
     Args:

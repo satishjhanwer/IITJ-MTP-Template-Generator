@@ -1,7 +1,7 @@
 """Input validation utilities for IITJ MTP Template Generator."""
 
-import re
 import os
+import re
 from typing import Dict, List
 
 
@@ -14,7 +14,7 @@ def validate_email(email: str) -> bool:
     Returns:
         True if email is valid, False otherwise
     """
-    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
     return bool(re.match(pattern, email))
 
 
@@ -23,18 +23,22 @@ def validate_required_fields(data: Dict, required_fields: List[str]) -> List[str
 
     Args:
         data: Dictionary of user inputs
-        required_fields: List of required field names (supports dot-notation for nested keys)
+        required_fields: List of required field names (dot-notation for nested keys)
 
     Returns:
         List of missing field names
     """
     missing = []
     for field in required_fields:
-        if '.' in field:
-            parts = field.split('.')
+        if "." in field:
+            parts = field.split(".")
             current = data
             for part in parts:
-                if not isinstance(current, dict) or part not in current or not current[part]:
+                if (
+                    not isinstance(current, dict)
+                    or part not in current
+                    or not current[part]
+                ):
                     missing.append(field)
                     break
                 current = current[part]
@@ -65,7 +69,7 @@ def validate_date_format(date_str: str) -> bool:
     Returns:
         True if format is valid, False otherwise
     """
-    pattern = r'^[A-Z][a-z]+\s+\d{4}$'
+    pattern = r"^[A-Z][a-z]+\s+\d{4}$"
     return bool(re.match(pattern, date_str))
 
 
@@ -82,20 +86,19 @@ def sanitize_latex(text: str) -> str:
     Returns:
         Sanitized text safe for LaTeX
     """
-    import re
-    _LATEX_ESCAPE_MAP = {
-        '\\': r'\textbackslash{}',
-        '{': r'\{',
-        '}': r'\}',
-        '&': r'\&',
-        '%': r'\%',
-        '$': r'\$',
-        '#': r'\#',
-        '_': r'\_',
-        '~': r'\textasciitilde{}',
-        '^': r'\textasciicircum{}',
+    _latex_escape_map = {
+        "\\": r"\textbackslash{}",
+        "{": r"\{",
+        "}": r"\}",
+        "&": r"\&",
+        "%": r"\%",
+        "$": r"\$",
+        "#": r"\#",
+        "_": r"\_",
+        "~": r"\textasciitilde{}",
+        "^": r"\textasciicircum{}",
     }
-    return re.sub(r'[\\{}&%$#_~^]', lambda m: _LATEX_ESCAPE_MAP[m.group()], text)
+    return re.sub(r"[\\{}&%$#_~^]", lambda m: _latex_escape_map[m.group()], text)
 
 
 def validate_config(config: Dict) -> tuple[bool, List[str]]:
@@ -110,31 +113,38 @@ def validate_config(config: Dict) -> tuple[bool, List[str]]:
     errors = []
 
     required = [
-        'project.title',
-        'project.type',
-        'author.name',
-        'author.roll_number',
-        'academic.supervisor',
-        'academic.department',
-        'academic.university',
-        'academic.degree',
+        "project.title",
+        "project.type",
+        "author.name",
+        "author.roll_number",
+        "academic.supervisor",
+        "academic.department",
+        "academic.university",
+        "academic.degree",
     ]
 
     missing = validate_required_fields(config, required)
     if missing:
         errors.append(f"Missing required fields: {', '.join(missing)}")
 
-    if 'author' in config and 'email' in config['author'] and config['author']['email']:
-        if not validate_email(config['author']['email']):
+    if "author" in config and "email" in config["author"] and config["author"]["email"]:
+        if not validate_email(config["author"]["email"]):
             errors.append(f"Invalid email format: {config['author']['email']}")
 
-    if 'project' in config and 'type' in config['project']:
-        valid_types = ['proposal', 'major-project', 'presentation']
-        if config['project']['type'] not in valid_types:
-            errors.append(f"Invalid project type: {config['project']['type']}. Must be one of {valid_types}")
+    if "project" in config and "type" in config["project"]:
+        valid_types = ["proposal", "major-project", "presentation"]
+        if config["project"]["type"] not in valid_types:
+            ptype = config["project"]["type"]
+            errors.append(
+                f"Invalid project type: {ptype}. Must be one of {valid_types}"
+            )
 
-    if 'assets' in config and 'logo_path' in config['assets'] and config['assets']['logo_path']:
-        if not validate_file_path(config['assets']['logo_path']):
+    if (
+        "assets" in config
+        and "logo_path" in config["assets"]
+        and config["assets"]["logo_path"]
+    ):
+        if not validate_file_path(config["assets"]["logo_path"]):
             errors.append(f"Logo file not found: {config['assets']['logo_path']}")
 
     return len(errors) == 0, errors

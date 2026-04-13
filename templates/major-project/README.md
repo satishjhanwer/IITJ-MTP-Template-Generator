@@ -2,7 +2,7 @@
 
 This directory contains your generated major project report. Follow the instructions below to complete and compile your report.
 
-## 📁 File Structure
+## File Structure
 
 ```bash
 .
@@ -26,7 +26,7 @@ This directory contains your generated major project report. Follow the instruct
 └── logo.png                  # University logo
 ```
 
-## ✏️ Editing Your Report
+## Editing Your Report
 
 ### Front Matter
 
@@ -51,7 +51,7 @@ This directory contains your generated major project report. Follow the instruct
 
 - **Bibliography** (`refs.bib`): Add all your references in BibTeX format
 
-## 🔧 Compiling the Report
+## Compiling the Report
 
 ### Using pdflatex (Recommended)
 
@@ -82,7 +82,7 @@ del *.aux *.bbl *.blg *.log *.out *.toc *.lof *.lot
 rm -f *.aux *.bbl *.blg *.log *.out *.toc *.lof *.lot
 ```
 
-## 📝 Tips
+## Tips
 
 - Search for `[TODO]` markers in the .tex files to find sections that need completion
 - Use `\cite{reference_key}` to cite references from `refs.bib`
@@ -92,7 +92,7 @@ rm -f *.aux *.bbl *.blg *.log *.out *.toc *.lof *.lot
 - Keep sections focused and well-organized
 - Proofread carefully before final submission
 
-## 🆘 Common Issues
+## Common Issues
 
 **Issue**: Bibliography not showing
 
@@ -114,14 +114,14 @@ rm -f *.aux *.bbl *.blg *.log *.out *.toc *.lof *.lot
 
 - **Solution**: Run pdflatex multiple times to resolve cross-references
 
-## 📚 Resources
+## Resources
 
 - [LaTeX Wikibook](https://en.wikibooks.org/wiki/LaTeX)
 - [Overleaf Documentation](https://www.overleaf.com/learn)
 - [IEEE Citation Guide](https://ieee-dataport.org/sites/default/files/analysis/27/IEEE%20Citation%20Guidelines.pdf)
 - [Google Scholar](https://scholar.google.com) - Generate BibTeX entries automatically
 
-## 📐 Formatting Guidelines
+## Formatting Guidelines
 
 - **Font Size**: 12pt (default)
 - **Line Spacing**: 1.5 (default)

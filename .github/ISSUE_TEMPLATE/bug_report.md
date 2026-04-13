@@ -36,7 +36,7 @@ If applicable, paste your config.yaml (remove sensitive information):
 **Environment:**
 
 - OS: [e.g., Windows 10, macOS 13, Ubuntu 22.04]
-- Python Version: [e.g., 3.9.7]
+- Python Version: [e.g., 3.10.14]
 - LaTeX Distribution: [e.g., MiKTeX, TeX Live]
 - Generator Version: [e.g., v1.0.0]
 

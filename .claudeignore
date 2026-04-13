@@ -1,0 +1,23 @@
+# Dependencies & Build
+**/node_modules
+**/dist
+**/build
+**/.yarn
+**/.venv
+**/env
+**/venv
+
+# Caches
+**/.history
+**/.mypy_cache
+**/.pytest_cache
+**/__pycache__
+**/.agents
+.DS_Store
+
+# Large binaries/data
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/*.db
+**/*.sqlite

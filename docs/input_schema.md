@@ -133,6 +133,27 @@ assets:
   - Recommended size: 300x300 pixels minimum
   - If not specified, a default placeholder will be used
 
+### Presentation Options
+
+Only used when `project.type` is `"presentation"`.
+
+```yaml
+presentation:
+  theme: "Madrid"           # Beamer theme name
+  color_scheme: "default"   # Beamer color theme name
+  aspect_ratio: "16:9"      # "16:9" or "4:3"
+  presentation_date: "November 2024"  # defaults to dates.submission_date
+  extract_from_report: false
+  report_path: "./output/my-report/main.tex"
+```
+
+- **theme** (string, default: `"Madrid"`): Beamer presentation theme (e.g., `"Madrid"`, `"Berlin"`, `"Warsaw"`)
+- **color_scheme** (string, default: `"default"`): Beamer color theme (e.g., `"default"`, `"beaver"`, `"crane"`)
+- **aspect_ratio** (string, default: `"16:9"`): Slide aspect ratio — `"16:9"` or `"4:3"`
+- **presentation_date** (string, optional): Date shown on title slide; falls back to `dates.submission_date`
+- **extract_from_report** (boolean, default: `false`): Auto-populate slides from an existing LaTeX report
+- **report_path** (string): Path to the source LaTeX report (required when `extract_from_report` is `true`)
+
 ## Complete Example
 
 ### Proposal Report

@@ -105,10 +105,10 @@ python scripts/generate.py --config presentation-config.yaml
 Output:
 
 ```txt
-📄 Extracting content from: ./output/my-project/main.tex
-✅ Content extracted successfully
-📁 Output directory: output/my-project-presentation
-✅ Report generated successfully!
+Extracting content from: ./output/my-project/main.tex
+Content extracted successfully
+Output directory: output/my-project-presentation
+Report generated successfully!
 ```
 
 ## What Gets Extracted
@@ -163,18 +163,18 @@ According to WHO, over 1 billion people live with some form of disability...
 
 ### What Works Well
 
-✅ Standard LaTeX section structures  
-✅ Itemize/enumerate lists  
-✅ Simple text paragraphs  
-✅ Common LaTeX commands  
+- [x] Standard LaTeX section structures  
+- [x] Itemize/enumerate lists  
+- [x] Simple text paragraphs  
+- [x] Common LaTeX commands  
 
 ### What May Need Manual Review
 
-⚠️ Complex nested structures  
-⚠️ Mathematical equations  
-⚠️ Tables and figures  
-⚠️ Custom LaTeX commands  
-⚠️ Non-standard section names  
+- Complex nested structures  
+- Mathematical equations  
+- Tables and figures  
+- Custom LaTeX commands  
+- Non-standard section names  
 
 ## Best Practices
 

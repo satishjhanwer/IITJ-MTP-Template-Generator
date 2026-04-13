@@ -5,7 +5,7 @@ Generate professional LaTeX academic reports (proposals, major projects, present
 <!-- [![GitHub Actions](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/workflows/Compile%20LaTeX/badge.svg)](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/actions) -->
 [![Tests](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/workflows/Run%20Tests/badge.svg)](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/actions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![LaTeX](https://img.shields.io/badge/LaTeX-TeX%20Live-green.svg)](https://www.latex-project.org/get/)
 [![Coverage](https://img.shields.io/badge/coverage-94%25-brightgreen.svg)](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/actions)
 [![Status](https://img.shields.io/badge/status-production--ready-success.svg)](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/actions)
@@ -19,7 +19,7 @@ A comprehensive, production-ready Python-based template generator for creating p
 - **What this tool creates:** a **LaTeX starter project**—your title, name, and similar fields from the prompts or config, plus **files and sections** for abstract, acknowledgments, declaration, certificate, title page, chapters (introduction, literature, methodology, results, discussion, conclusion, etc., depending on report type). **Body text is mostly placeholders** (`[TODO]` / `% TODO`); **you** must write the real content.
 - **PDF:** If you compile **before** replacing placeholders, you get a **correctly formatted “template” PDF**—useful to check layout, **not** a substitute for your finished report.
 
-## ✨ Features
+## Features
 
 ### Core Features
 
@@ -40,19 +40,19 @@ A comprehensive, production-ready Python-based template generator for creating p
 - **66% Faster Generation**: Optimized with template caching and parallel I/O
 - **Error Handling**: Helpful error messages with suggestions and documentation links
 - **Progress Tracking**: Visual progress bars and spinners for better UX
-- **Cross-Platform**: Tested on Windows, macOS, and Linux with Python 3.9-3.12
+- **Cross-Platform**: Tested on Windows, macOS, and Linux with Python 3.10-3.12
 
-## 📋 Supported Report Types
+## Supported Report Types
 
-- ✅ **Proposal Report** (MTP1/Research Proposal)
-- ✅ **Major Project Report** (Full Thesis/Dissertation)
-- ✅ **Presentation Slides** (Beamer)
+- [x]**Proposal Report** (MTP1/Research Proposal)
+- [x]**Major Project Report** (Full Thesis/Dissertation)
+- [x]**Presentation Slides** (Beamer)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
-- Python 3.9 or higher
+- Python 3.10 or higher
 - LaTeX distribution (TeX Live, MiKTeX, or MacTeX)
 
 ### Installation
@@ -117,7 +117,7 @@ pdflatex proposal.tex
 pdflatex proposal.tex
 ```
 
-## 📚 Documentation
+## Documentation
 
 - [Simple guide for beginners](docs/beginners_guide.md) - Plain-language overview (recommended if you are new to the command line)
 - [Quick Start Guide](docs/quickstart.md) - Get started in 5 minutes
@@ -128,7 +128,7 @@ pdflatex proposal.tex
 - [Content Extraction](docs/content_extraction.md) - Populate slides from existing reports
 - [Setup Checklist](docs/setup_checklist.md) - Verify prerequisites and tooling
 
-## 📁 Project Structure
+## Project Structure
 
 ```bash
 IITJ-MTP-Template-Generator/
@@ -150,7 +150,7 @@ IITJ-MTP-Template-Generator/
 └── README.md                    # This file
 ```
 
-## 🎨 Customization
+## Customization
 
 ### Using Custom Logo
 
@@ -178,7 +178,7 @@ formatting:
 
 See [Customization Guide](docs/customization.md) for more options.
 
-## 📖 Example Usage
+## Example Usage
 
 ### Proposal Report
 
@@ -213,14 +213,14 @@ academic:
   supervisor_department: "Department of Computer Science"
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **Python 3.9+** - Core generator
+- **Python 3.10+** - Core generator
 - **Jinja2** - Template rendering
 - **PyYAML** - Configuration parsing
 - **LaTeX** - Document generation
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. Areas where you can contribute:
 
@@ -230,25 +230,25 @@ Contributions are welcome! Please feel free to submit a Pull Request. Areas wher
 - Documentation improvements
 - Translations
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - IEEE for the bibliography style
 - LaTeX community for excellent documentation
 - All contributors and users of this project
 
-## 📞 Support
+## Support
 
 - **Issues**: [GitHub Issues](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/discussions)
 - **Documentation**: [docs/](docs/)
 
-## 🗺️ Roadmap
+## Roadmap
 
-### ✅ Completed
+### Completed
 
 - [x] Proposal report template
 - [x] Major project report template
@@ -266,7 +266,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [x] Progress tracking and UX improvements
 - [x] Web-based configuration generator
 
-### 🚧 In Progress / Planned
+### In Progress / Planned
 
 - [ ] Multiple university templates (IIT Delhi, IISc, etc.)
 - [ ] Template customization UI

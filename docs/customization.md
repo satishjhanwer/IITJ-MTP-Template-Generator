@@ -127,17 +127,11 @@ Project Code: \VAR{PROJECT_CODE}
 
 ### Using Your University Logo
 
-1. **Via Config File**:
+In your config file:
 
 ```yaml
 assets:
   logo_path: "./path/to/logo.png"
-```
-
-1. **Via Command Line**:
-
-```bash
-python scripts/generate.py --config config.yaml --logo path/to/logo.png
 ```
 
 ### Logo Requirements

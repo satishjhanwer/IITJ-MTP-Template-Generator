@@ -148,11 +148,11 @@ Replace `YOUR-USERNAME` and `YOUR-REPO` with your GitHub username and repository
 
 ## Benefits
 
-✅ **Automatic PDF Generation** - No need to install LaTeX locally  
-✅ **Version Control** - Every commit gets compiled  
-✅ **Collaboration** - Team members can download PDFs without LaTeX  
-✅ **Consistent Environment** - Same LaTeX version for everyone  
-✅ **Free** - GitHub Actions provides free minutes for public repositories
+- [x] **Automatic PDF Generation** - No need to install LaTeX locally  
+- [x] **Version Control** - Every commit gets compiled  
+- [x] **Collaboration** - Team members can download PDFs without LaTeX  
+- [x] **Consistent Environment** - Same LaTeX version for everyone  
+- [x] **Free** - GitHub Actions provides free minutes for public repositories
 
 ## Limitations
 

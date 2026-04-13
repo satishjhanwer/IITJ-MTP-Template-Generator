@@ -24,7 +24,7 @@ class TestGeneratorError:
         """Test error with just a message."""
         error = GeneratorError("Test error")
         assert "Test error" in str(error)
-        assert "❌ Error:" in str(error)
+        assert "Error:" in str(error)
     
     def test_error_with_suggestions(self):
         """Test error with suggestions."""
@@ -33,7 +33,7 @@ class TestGeneratorError:
             suggestions=["Suggestion 1", "Suggestion 2"]
         )
         error_str = str(error)
-        assert "💡 Suggestions:" in error_str
+        assert "Suggestions:" in error_str
         assert "Suggestion 1" in error_str
         assert "Suggestion 2" in error_str
     
@@ -44,7 +44,7 @@ class TestGeneratorError:
             doc_link="https://example.com/docs"
         )
         error_str = str(error)
-        assert "📖 Documentation:" in error_str
+        assert "Documentation:" in error_str
         assert "https://example.com/docs" in error_str
     
     def test_error_with_all_fields(self):

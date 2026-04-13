@@ -33,34 +33,34 @@ jobs:
             local dir=$(dirname "$tex_file")
             local base=$(basename "$tex_file" .tex)
             
-            echo "📝 Compiling: $tex_file"
+            echo "Compiling: $tex_file"
             cd "$dir"
             
             # First pass
-            pdflatex -interaction=nonstopmode "$base.tex" || echo "⚠️ First pass had warnings"
+            pdflatex -interaction=nonstopmode "$base.tex" || echo "First pass had warnings"
             
             # Run bibtex if .bib file exists
             if ls *.bib 1> /dev/null 2>&1; then
-              bibtex "$base" || echo "⚠️ BibTeX had warnings"
+              bibtex "$base" || echo "BibTeX had warnings"
             fi
             
             # Second pass
-            pdflatex -interaction=nonstopmode "$base.tex" || echo "⚠️ Second pass had warnings"
+            pdflatex -interaction=nonstopmode "$base.tex" || echo "Second pass had warnings"
             
             # Third pass for references
-            pdflatex -interaction=nonstopmode "$base.tex" || echo "⚠️ Third pass had warnings"
+            pdflatex -interaction=nonstopmode "$base.tex" || echo "Third pass had warnings"
             
             if [ -f "$base.pdf" ]; then
-              echo "✅ Successfully compiled: $base.pdf"
+              echo "Successfully compiled: $base.pdf"
             else
-              echo "❌ Failed to compile: $tex_file"
+              echo "Failed to compile: $tex_file"
             fi
             
             cd - > /dev/null
           }
 
           # Find all main LaTeX files (proposal.tex, main.tex, slides.tex)
-          echo "🔍 Searching for LaTeX files in output directory..."
+          echo "Searching for LaTeX files in output directory..."
 
           # Compile proposal reports
           find output -name "proposal.tex" -type f | while read file; do
@@ -79,7 +79,7 @@ jobs:
 
       - name: List compiled PDFs
         run: |
-          echo "📄 Compiled PDF files:"
+          echo "Compiled PDF files:"
           find output -name "*.pdf" -type f || echo "No PDFs found"
 
       - name: Upload PDF artifacts
@@ -94,16 +94,16 @@ jobs:
       - name: Compilation Summary
         if: always()
         run: |
-          echo "📊 Compilation Summary"
+          echo "Compilation Summary"
           echo "====================="
           pdf_count=$(find output -name "*.pdf" -type f | wc -l)
           echo "Total PDFs generated: $pdf_count"
 
           if [ $pdf_count -gt 0 ]; then
-            echo "✅ Compilation successful!"
+            echo "Compilation successful!"
             echo ""
-            echo "📥 Download artifacts from the Actions tab:"
+            echo "Download artifacts from the Actions tab:"
             echo "   https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           else
-            echo "⚠️ No PDFs were generated. Check the logs above for errors."
+            echo "No PDFs were generated. Check the logs above for errors."
           fi

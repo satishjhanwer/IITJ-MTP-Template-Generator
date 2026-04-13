@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing! This document provides guidelines for contributing to the project.
 
-## 🤝 How to Contribute
+## How to Contribute
 
 ### Reporting Bugs
 
@@ -32,7 +32,7 @@ Feature requests are welcome! Please:
 6. **Push to your fork**: `git push origin feature/your-feature-name`
 7. **Open a Pull Request**
 
-## 📝 Contribution Areas
+## Contribution Areas
 
 ### 1. University Templates
 
@@ -78,32 +78,37 @@ Before working on major features:
 - Get feedback from maintainers
 - Ensure it aligns with project goals
 
-## 🧪 Testing Guidelines
+## Testing Guidelines
 
 Before submitting a PR:
 
-1. **Test the generator**:
+1. **Run the test suite**:
 
    ```bash
-   python scripts/generate.py --config examples/sample-proposal/config.yaml
+   pytest --cov=scripts --cov-report=term-missing
    ```
 
-2. **Test LaTeX compilation**:
+2. **Test the generator end-to-end**:
 
    ```bash
-   cd output/test-project
-   pdflatex proposal.tex
-   bibtex proposal
-   pdflatex proposal.tex
-   pdflatex proposal.tex
+   python scripts/generate.py --config examples/sample-proposal/config.yaml --output output/test-proposal
+   python scripts/generate.py --config examples/sample-major-project/config.yaml --output output/test-major-project
+   python scripts/generate.py --config examples/sample-presentation/config.yaml --output output/test-presentation
    ```
 
-3. **Check for errors**:
-   - Python syntax errors
+3. **Test LaTeX compilation** (optional, requires LaTeX installation):
+
+   ```bash
+   cd output/test-proposal
+   pdflatex proposal.tex && bibtex proposal && pdflatex proposal.tex && pdflatex proposal.tex
+   ```
+
+4. **Check for errors**:
+   - All tests pass with no regressions
    - LaTeX compilation errors
    - Broken links in documentation
 
-## 📋 Code Style
+## Code Style
 
 ### Python
 
@@ -127,7 +132,7 @@ Before submitting a PR:
 - Keep formatting consistent
 - Use proper markdown syntax
 
-## 🔍 Pull Request Process
+## Pull Request Process
 
 1. **Update documentation** if you've changed functionality
 2. **Add examples** if you've added new features
@@ -154,27 +159,26 @@ Include:
 - Screenshots (if UI changes)
 - Related issues
 
-## 🎯 Priority Areas
+## Priority Areas
 
 Current priority areas for contributions:
 
-1. **Phase 2**: Beamer presentation templates
-2. **Testing**: Automated tests for generator
-3. **Examples**: More example configurations
-4. **Templates**: University-specific templates
-5. **Documentation**: Video tutorials
+1. **Examples**: More example configurations for different universities and degrees
+2. **Templates**: University-specific templates
+3. **Documentation**: Video tutorials
+4. **Features**: Export formats, additional citation styles
 
-## 📜 License
+## License
 
 By contributing, you agree that your contributions will be licensed under the MIT License.
 
-## 💬 Communication
+## Communication
 
 - **Issues**: For bug reports and feature requests
 - **Discussions**: For questions and general discussion
 - **Pull Requests**: For code contributions
 
-## 🙏 Recognition
+## Recognition
 
 Contributors will be recognized in:
 
@@ -182,7 +186,7 @@ Contributors will be recognized in:
 - Release notes
 - Project documentation
 
-## ❓ Questions?
+## Questions?
 
 If you have questions about contributing:
 
@@ -192,4 +196,4 @@ If you have questions about contributing:
 
 ---
 
-Thank you for contributing to IITJ MTP Template Generator! 🎓
+Thank you for contributing to IITJ MTP Template Generator!

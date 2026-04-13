@@ -2,7 +2,7 @@
 
 This directory contains your generated proposal report. Follow the instructions below to complete and compile your report.
 
-## 📁 File Structure
+## File Structure
 
 ```bash
 .
@@ -19,7 +19,7 @@ This directory contains your generated proposal report. Follow the instructions 
 └── logo.png                  # University logo
 ```
 
-## ✏️ Editing Your Report
+## Editing Your Report
 
 1. **Abstract** (`sections/abstract.tex`): Write a 150-300 word summary of your project
 2. **Introduction** (`sections/introduction.tex`): Complete the motivation, problem statement, and objectives
@@ -28,7 +28,7 @@ This directory contains your generated proposal report. Follow the instructions 
 5. **Timeline** (`sections/timeline.tex`): Update the project milestones and deliverables
 6. **References** (`proposal_refs.bib`): Add your bibliography entries
 
-## 🔧 Compiling the Report
+## Compiling the Report
 
 ### Using pdflatex (Recommended)
 
@@ -55,14 +55,14 @@ del *.aux *.bbl *.blg *.log *.out *.toc *.lof *.lot
 rm -f *.aux *.bbl *.blg *.log *.out *.toc *.lof *.lot
 ```
 
-## 📝 Tips
+## Tips
 
 - Search for `[TODO]` markers in the .tex files to find sections that need completion
 - Use `\cite{reference_key}` to cite references from `proposal_refs.bib`
 - Add figures to a `figures/` directory and include them with `\includegraphics{figures/filename.png}`
 - Keep paragraphs concise and use subsections to organize content
 
-## 🆘 Common Issues
+## Common Issues
 
 **Issue**: Bibliography not showing
 
@@ -76,7 +76,7 @@ rm -f *.aux *.bbl *.blg *.log *.out *.toc *.lof *.lot
 
 - **Solution**: Check for special characters that need escaping: `& % $ # _ { } ~ ^`
 
-## 📚 Resources
+## Resources
 
 - [LaTeX Wikibook](https://en.wikibooks.org/wiki/LaTeX)
 - [Overleaf Documentation](https://www.overleaf.com/learn)

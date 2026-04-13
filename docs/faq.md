@@ -261,12 +261,6 @@ assets:
   logo_path: "./path/to/logo.png"
 ```
 
-Or use the `--logo` flag:
-
-```bash
-python scripts/generate.py --config config.yaml --logo logo.png
-```
-
 ### Q: Can I change the title page layout?
 
 **A:** Yes! Edit `titlePage.tex` in the generated output or in the template directory.
@@ -317,7 +311,7 @@ content:
 \begin{figure}[H]  % H = exactly here (requires float package)
 \begin{figure}[t]  % t = top of page
 \begin{figure}[b]  % b = bottom of page
-\begin{figure}[p]  # p = separate page
+\begin{figure}[p]  % p = separate page
 ```
 
 ### Q: Page numbers are wrong

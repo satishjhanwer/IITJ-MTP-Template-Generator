@@ -12,10 +12,10 @@ The generator creates a **LaTeX project** under `output/` with your **metadata**
 
 Before you begin, make sure you have:
 
-1. **Python 3.9+** installed
+1. **Python 3.10+** installed
 
    ```bash
-   python --version  # Should show 3.9 or higher
+   python --version  # Should show 3.10 or higher
    ```
 
 2. **LaTeX distribution** installed
@@ -130,9 +130,9 @@ Open the generated PDF file:
 
 ## Next Steps
 
-- 📖 Read the [Input Schema](input-schema) to understand all configuration options
-- 🎨 Check the [Customization Guide](customization) to personalize your report
-- ❓ See the [FAQ](faq) for common questions and issues
+- Read the [Input Schema](input-schema) to understand all configuration options
+- Check the [Customization Guide](customization) to personalize your report
+- See the [FAQ](faq) for common questions and issues
 
 ## Common Issues
 
@@ -164,4 +164,4 @@ Open the generated PDF file:
 
 ---
 
-Happy report writing! 📝
+Happy report writing!

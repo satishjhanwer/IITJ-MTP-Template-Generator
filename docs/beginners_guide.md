@@ -24,7 +24,7 @@ This program **does not** write your thesis or proposal for you. It **creates a 
 
 ## What you need on your computer
 
-1. **Python** (3.9 or newer)—used once to run the generator script.
+1. **Python** (3.10 or newer)—used once to run the generator script.
 2. **A LaTeX system** (MiKTeX, TeX Live, MacTeX, etc.)—needed when you want to turn `.tex` files into a **PDF**.
 3. **This project’s folder**—from `git clone` or by downloading the repository as a ZIP from GitHub (ZIP means you update manually when the project releases new versions).
 

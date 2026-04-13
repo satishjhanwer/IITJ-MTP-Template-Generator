@@ -14,17 +14,17 @@ Generate professional LaTeX academic reports with ease
 
 A Python-based tool that builds a **structured LaTeX project** from simple configuration files: your title, name, supervisor, and other settings, plus **section shells** you must fill in (abstract, chapters, acknowledgments, and more). It does **not** write your report content for you. Perfect for students and researchers who need to create:
 
-- 📄 **Proposal Reports** (MTP1/Research Proposals)
-- 📚 **Major Project Reports** (Full Thesis/Dissertation)
-- 🎤 **Presentation Slides** (Beamer)
+- **Proposal Reports** (MTP1/Research Proposals)
+- **Major Project Reports** (Full Thesis/Dissertation)
+- **Presentation Slides** (Beamer)
 
 ## Key Features
 
-✅ **Easy to Use** - Interactive CLI or YAML configuration  
-✅ **Professional Templates** - IEEE-style formatting  
-✅ **Fully Customizable** - Modify templates to match your needs  
-✅ **Well Documented** - Comprehensive guides and examples  
-✅ **Zero Dependencies Option** - Works without pip  
+- [x] **Easy to Use** - Interactive CLI or YAML configuration  
+- [x] **Professional Templates** - IEEE-style formatting  
+- [x] **Fully Customizable** - Modify templates to match your needs  
+- [x] **Well Documented** - Comprehensive guides and examples  
+- [x] **Zero Dependencies Option** - Works without pip  
 
 ## Quick Example
 
@@ -100,7 +100,7 @@ The generator creates a complete LaTeX project with:
 
 ## Requirements
 
-- Python 3.9+
+- Python 3.10+
 - LaTeX distribution (TeX Live, MiKTeX, or MacTeX)
 - Optional: Jinja2 and PyYAML (or use zero-dependency version)
 

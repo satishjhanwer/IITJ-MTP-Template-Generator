@@ -2,7 +2,7 @@
 
 Complete this checklist to set up and deploy your Academic Report Generator repository.
 
-## ✅ Pre-Push Checklist
+## Pre-Push Checklist
 
 ### 1. Local Testing
 
@@ -71,7 +71,7 @@ Complete this checklist to set up and deploy your Academic Report Generator repo
   git push -u origin main
   ```
 
-## 🚀 Post-Push Configuration
+## Post-Push Configuration
 
 ### 4. Enable GitHub Pages
 
@@ -111,12 +111,12 @@ Complete this checklist to set up and deploy your Academic Report Generator repo
   First stable release of the Academic Report Generator!
   
   ## Features
-  - ✅ Proposal report template
-  - ✅ Major project report template
-  - ✅ Interactive CLI
-  - ✅ YAML configuration support
-  - ✅ Zero-dependency fallback
-  - ✅ Comprehensive documentation
+  - [x] Proposal report template
+  - [x] Major project report template
+  - [x] Interactive CLI
+  - [x] YAML configuration support
+  - [x] Zero-dependency fallback
+  - [x] Comprehensive documentation
   
   ## Installation
   See the [Quick Start Guide](https://satishjhanwer.github.io/IITJ-MTP-Template-Generator/quickstart)
@@ -124,7 +124,7 @@ Complete this checklist to set up and deploy your Academic Report Generator repo
 
 - [ ] Publish release
 
-## 📝 Optional Enhancements
+## Optional Enhancements
 
 ### 8. Add Repository Badges
 
@@ -152,7 +152,7 @@ Add to README.md after the title:
 - [ ] Add `CODE_OF_CONDUCT.md` (optional)
 - [ ] Add `SECURITY.md` (optional)
 
-## 🎯 Verification
+## Verification
 
 After completing the setup:
 
@@ -162,7 +162,7 @@ After completing the setup:
 - [ ] Check that Actions workflows pass
 - [ ] Verify all links work in documentation
 
-## 📢 Promotion (Optional)
+## Promotion (Optional)
 
 - [ ] Share on social media
 - [ ] Post in relevant communities (Reddit, Discord, etc.)
@@ -171,4 +171,4 @@ After completing the setup:
 
 ---
 
-**Congratulations! Your repository is ready for users! 🎉**
+**Congratulations! Your repository is ready for users!**

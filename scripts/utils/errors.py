@@ -9,11 +9,11 @@ from typing import List, Optional
 
 class GeneratorError(Exception):
     """Base exception for generator errors."""
-    
-    def __init__(self, message: str, suggestions: Optional[List[str]] = None, 
+
+    def __init__(self, message: str, suggestions: Optional[List[str]] = None,
                  doc_link: Optional[str] = None):
         """Initialize error with message, suggestions, and documentation link.
-        
+
         Args:
             message: Error message
             suggestions: List of helpful suggestions
@@ -23,19 +23,19 @@ class GeneratorError(Exception):
         self.suggestions = suggestions or []
         self.doc_link = doc_link
         super().__init__(self.format_error())
-    
+
     def format_error(self) -> str:
         """Format error message with suggestions and documentation link."""
-        lines = [f"\n❌ Error: {self.message}"]
-        
+        lines = [f"\nError: {self.message}"]
+
         if self.suggestions:
-            lines.append("\n💡 Suggestions:")
+            lines.append("\nSuggestions:")
             for suggestion in self.suggestions:
-                lines.append(f"   • {suggestion}")
-        
+                lines.append(f"  - {suggestion}")
+
         if self.doc_link:
-            lines.append(f"\n📖 Documentation: {self.doc_link}")
-        
+            lines.append(f"\nDocumentation: {self.doc_link}")
+
         return "\n".join(lines)
 
 
@@ -58,8 +58,6 @@ class ValidationError(GeneratorError):
     """Validation errors."""
     pass
 
-
-# Common error scenarios with helpful messages
 
 def config_file_not_found(path: str) -> ConfigurationError:
     """Error when configuration file is not found."""

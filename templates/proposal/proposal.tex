@@ -17,26 +17,42 @@
 \usepackage{titlesec}
 \usepackage{chngcntr}
 \usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage[acronym]{glossaries}
+\usepackage{etoolbox}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 
 % Page geometry
 \geometry{
-    paper=a4paper,
-    inner=1in,
-    outer=1in,
-    bindingoffset=.5cm,
-    top=0.75in,
-    bottom=0.75in
+  paper=a4paper,
+  left=0.75in,
+  right=0.75in,
+  top=1in,
+  bottom=1in
 }
 
 % Line spacing
 \setstretch{1.5}
+\AtBeginEnvironment{verbatim}{\setstretch{1}}
+
+% Glossaries
+\makeglossaries
+\input{glossary}
 
 % Counter configuration
 \counterwithin{table}{section}
 \counterwithin{figure}{section}
+\numberwithin{equation}{section}
 
 % Date format
 \newdateformat{monthyeardate}{\monthname[\THEMONTH], \THEYEAR}
+
+% Section formatting
+\titleformat{\section}{\normalfont\Large\bfseries\MakeUppercase}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\itshape}{\thesubsection}{1em}{}
 
 % Define variables
 \newcommand{\ttitle}{\VAR{TITLE}}
@@ -47,18 +63,30 @@
 \newcommand{\degree}{\VAR{DEGREE}}
 \newcommand{\univname}{\VAR{UNIVERSITY}}
 \newcommand{\deptname}{\VAR{DEPARTMENT}}
+\newcommand{\suppost}{\VAR{SUPERVISOR_DESIGNATION}}
+\newcommand{\supdeptname}{\VAR{SUPERVISOR_DEPARTMENT}}
 
 \begin{document}
 
 % Title page
+\pagenumbering{roman}
 \input{titlePage.tex}
+\clearpage
+\setcounter{page}{2}
 
-% Abstract
+% Declaration (comment out the next two lines if not required)
+\input{declaration.tex}
 \newpage
+
+% Certificate (comment out the next two lines if not required)
+\input{certificate.tex}
+\newpage
+
+% Abstract (comment out the next two lines if not required)
 \input{sections/abstract.tex}
+\newpage
 
 % Table of contents
-\newpage
 \tableofcontents
 
 % List of figures
@@ -71,6 +99,7 @@
 
 % Main content
 \newpage
+\pagenumbering{arabic}
 
 \section{Introduction}
 \input{sections/introduction.tex}

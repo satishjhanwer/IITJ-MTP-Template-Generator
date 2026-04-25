@@ -1,15 +1,44 @@
-% Acronyms / Abbreviations Alphabetical
-% Usage: \gls{ai} or \acrshort{ai} or \acrlong{ai}
+% Acronyms / Abbreviations — alphabetical order
+% Usage in text: \gls{key}  \acrshort{key}  \acrlong{key}  \acrfull{key}
+%
+% Common acronyms — keep those relevant to your project, add domain-specific ones below
 \newacronym{ai}{AI}{Artificial Intelligence}
-\newacronym{ml}{ML}{Machine Learning}
+\newacronym{api}{API}{Application Programming Interface}
+\newacronym{cicd}{CI/CD}{Continuous Integration / Continuous Deployment}
+\newacronym{cli}{CLI}{Command-Line Interface}
+\newacronym{cpu}{CPU}{Central Processing Unit}
+\newacronym{cnn}{CNN}{Convolutional Neural Network}
+\newacronym{db}{DB}{Database}
+\newacronym{dl}{DL}{Deep Learning}
+\newacronym{gpu}{GPU}{Graphics Processing Unit}
+\newacronym{gui}{GUI}{Graphical User Interface}
+\newacronym{http}{HTTP}{HyperText Transfer Protocol}
 \newacronym{iot}{IoT}{Internet of Things}
+\newacronym{json}{JSON}{JavaScript Object Notation}
+\newacronym{ml}{ML}{Machine Learning}
+\newacronym{nlp}{NLP}{Natural Language Processing}
+\newacronym{os}{OS}{Operating System}
+\newacronym{rest}{REST}{Representational State Transfer}
+\newacronym{rnn}{RNN}{Recurrent Neural Network}
+\newacronym{sql}{SQL}{Structured Query Language}
+\newacronym{ui}{UI}{User Interface}
+\newacronym{url}{URL}{Uniform Resource Locator}
+\newacronym{ux}{UX}{User Experience}
 
 % TODO: Add your project-specific acronyms here
-% \newacronym{key}{abbr}{full name}
+% \newacronym{key}{ABBR}{Full Name}
 
-% Symbols sorted alphabetically by sort key
-% Usage: \gls{symbol_id}
-\newglossaryentry{pi}{name={$\pi$}, sort=pi, description={A mathematical constant approximately equal to 3.14159}}
+% Symbols — sorted alphabetically by sort key
+% Usage in text: \gls{symbol_id}   (also \glsadd{id} to index without printing)
+%
+\newglossaryentry{alpha}{name={$\alpha$}, sort=alpha,
+  description={Learning rate --- step size used during gradient-descent optimisation}}
+\newglossaryentry{mu}{name={$\mu$}, sort=mu,
+  description={Mean (expected value) of a random variable}}
+\newglossaryentry{sigma}{name={$\sigma$}, sort=sigma,
+  description={Standard deviation --- measure of spread in a distribution}}
+\newglossaryentry{pi}{name={$\pi$}, sort=pi,
+  description={Mathematical constant $\approx 3.14159$, ratio of circumference to diameter}}
 
 % TODO: Add your project-specific symbols here
 % \newglossaryentry{id}{name={$symbol$}, sort=sortkey, description={Description}}

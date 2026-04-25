@@ -70,11 +70,9 @@
 \begin{document}
 
 % Title page
+\pagenumbering{roman}
 \input{titlePage.tex}
 \clearpage
-
-% Start pre-main text numbering (Roman): cover is counted but not printed
-\pagenumbering{roman}
 \setcounter{page}{2}
 
 % Declaration
@@ -91,19 +89,17 @@
 
 % Acknowledgments
 \BLOCK{if INCLUDE_ACKNOWLEDGMENTS}
-\newpage
 \input{acknowledgments.tex}
+\newpage
 \BLOCK{endif}
 
 % Abstract
 \BLOCK{if INCLUDE_ABSTRACT}
-\newpage
 \input{abstract.tex}
+\newpage
 \BLOCK{endif}
 
 % Table of contents
-\newpage
-\pagenumbering{roman}
 \tableofcontents
 
 % List of figures

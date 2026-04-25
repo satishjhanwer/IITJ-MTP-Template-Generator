@@ -88,7 +88,7 @@ def get_files_to_copy(
     file_pairs = []
     exclude_patterns = exclude_patterns or []
 
-    for root, dirs, files in os.walk(src_dir):
+    for root, _, files in os.walk(src_dir):
         rel_path = os.path.relpath(root, src_dir)
 
         for file in files:

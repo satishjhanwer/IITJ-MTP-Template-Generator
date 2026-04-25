@@ -72,12 +72,11 @@ def get_user_input(
 
         if value:
             return value
-        elif default:
+        if default:
             return default
-        elif not required:
+        if not required:
             return ""
-        else:
-            print("[ERROR] This field is required. Please provide a value.")
+        print("[ERROR] This field is required. Please provide a value.")
 
 
 def collect_interactive_inputs() -> Dict[str, Any]:
@@ -98,14 +97,13 @@ def collect_interactive_inputs() -> Dict[str, Any]:
         if choice == "1":
             project_type = "proposal"
             break
-        elif choice == "2":
+        if choice == "2":
             project_type = "major-project"
             break
-        elif choice == "3":
+        if choice == "3":
             project_type = "presentation"
             break
-        else:
-            print("[ERROR] Invalid choice. Please enter 1, 2, or 3.")
+        print("[ERROR] Invalid choice. Please enter 1, 2, or 3.")
 
     print()
 
@@ -212,7 +210,7 @@ def copy_template_files(template_type: str, output_dir: str, script_dir: str) ->
     if not os.path.exists(template_dir):
         raise FileNotFoundError(f"Template directory not found: {template_dir}")
 
-    for root, dirs, files in os.walk(template_dir):
+    for root, _, files in os.walk(template_dir):
         for file in files:
             if file.endswith(".tex"):
                 continue
@@ -250,7 +248,7 @@ def render_templates(
         lstrip_blocks=True,
     )
 
-    for root, dirs, files in os.walk(template_dir):
+    for root, _, files in os.walk(template_dir):
         for file in files:
             if file.endswith(".tex"):
                 src_path = os.path.join(root, file)

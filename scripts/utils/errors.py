@@ -46,25 +46,17 @@ class GeneratorError(Exception):
 class ConfigurationError(GeneratorError):
     """Configuration-related errors."""
 
-    pass
-
 
 class TemplateError(GeneratorError):
     """Template-related errors."""
-
-    pass
 
 
 class FileError(GeneratorError):
     """File operation errors."""
 
-    pass
-
 
 class ValidationError(GeneratorError):
     """Validation errors."""
-
-    pass
 
 
 def config_file_not_found(path: str) -> ConfigurationError:

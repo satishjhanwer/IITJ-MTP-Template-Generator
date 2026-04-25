@@ -37,12 +37,11 @@ def get_user_input(prompt, default=None, required=True):
 
         if value:
             return value
-        elif default:
+        if default:
             return default
-        elif not required:
+        if not required:
             return ""
-        else:
-            print("[ERROR] This field is required. Please provide a value.")
+        print("[ERROR] This field is required. Please provide a value.")
 
 
 def collect_inputs():
@@ -59,14 +58,13 @@ def collect_inputs():
         if choice == "1":
             project_type = "proposal"
             break
-        elif choice == "2":
+        if choice == "2":
             project_type = "major-project"
             break
-        elif choice == "3":
+        if choice == "3":
             project_type = "presentation"
             break
-        else:
-            print("[ERROR] Invalid choice. Please enter 1, 2, or 3.")
+        print("[ERROR] Invalid choice. Please enter 1, 2, or 3.")
 
     print()
 
@@ -169,7 +167,7 @@ def copy_and_process_files(template_type, config, output_dir, script_dir):
         ),
     }
 
-    for root, dirs, files in os.walk(template_dir):
+    for root, _, files in os.walk(template_dir):
         for file in files:
             src_path = os.path.join(root, file)
             rel_path = os.path.relpath(src_path, template_dir)
@@ -251,7 +249,7 @@ def main():
             print(f"[ERROR] Config file not found: {args.config}")
             sys.exit(1)
 
-        with open(args.config, "r") as f:
+        with open(args.config, "r", encoding="utf-8") as f:
             config = json.load(f)
         print(f"[OK] Loaded configuration from: {args.config}")
     else:

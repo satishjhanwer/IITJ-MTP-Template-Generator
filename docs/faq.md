@@ -136,7 +136,7 @@ python scripts/generate.py --config config.yaml --output /path/to/output
    pdflatex main.tex
    ```
 
-If you don't have `makeglossaries`, see the instructions in the [template README](../templates/major-project/README.md) for the manual command.
+If you don't have `makeglossaries`, see the instructions in the [template README](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/blob/main/templates/major-project/README.md) for the manual command.
 
 ### Q: Table of contents is empty or outdated
 
@@ -350,7 +350,7 @@ content:
 
 ### Q: Can I use this commercially?
 
-**A:** Yes! This project is MIT licensed. See [LICENSE](../LICENSE) for details.
+**A:** Yes! This project is MIT licensed. See [LICENSE](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/blob/main/LICENSE) for details.
 
 ### Q: How do I report bugs?
 

@@ -6,12 +6,9 @@ The IITJ MTP Template Generator includes automatic LaTeX compilation through Git
 
 ## How It Works
 
-### Automatic Compilation
+### Manual Compilation
 
-The workflow triggers automatically when:
-
-- You push changes to `.tex` files in the `output/` directory
-- Changes are pushed to the `main` or `master` branch
+The workflow is triggered manually from the GitHub Actions tab (it does not run automatically on push). This keeps your free Actions minutes available for when you actually need a compiled PDF.
 
 ### Supported Report Types
 
@@ -21,7 +18,7 @@ All three report types are automatically detected and compiled:
 - **Major Project Reports** (`main.tex`)
 - **Presentation Slides** (`slides.tex`)
 
-## Using Auto-Compilation
+## Using the Workflow
 
 ### Setup (One-Time)
 
@@ -41,7 +38,7 @@ All three report types are automatically detected and compiled:
    git push origin main
    ```
 
-4. **Wait for compilation** - GitHub Actions will automatically compile your LaTeX files
+4. **Trigger compilation** manually from the Actions tab (see [Triggering the Workflow](#triggering-the-workflow))
 
 ### Downloading Compiled PDFs
 
@@ -52,9 +49,9 @@ All three report types are automatically detected and compiled:
 5. Download `compiled-pdfs-{number}.zip`
 6. Extract the ZIP file to get your PDFs
 
-## Manual Compilation
+## Triggering the Workflow
 
-You can also trigger compilation manually:
+To run compilation:
 
 1. Go to **Actions** tab in your repository
 2. Click **"Compile LaTeX to PDF"** in the left sidebar
@@ -100,13 +97,13 @@ For each LaTeX file found, the workflow:
 
 Warnings are normal and don't prevent PDF generation. The workflow uses `-interaction=nonstopmode` to continue compilation even with warnings.
 
-### Workflow Not Triggering
+### Workflow Not Appearing
 
 **Verify:**
 
-- Changes are in `output/**/*.tex` files
-- Pushing to `main` or `master` branch
+- You are on the correct repository page in GitHub
 - Workflow file exists at `.github/workflows/compile-latex.yml`
+- The workflow has `workflow_dispatch:` in its `on:` section
 
 ## Advanced Configuration
 

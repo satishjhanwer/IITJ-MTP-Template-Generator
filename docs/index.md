@@ -28,16 +28,7 @@ A Python-based tool that builds a **structured LaTeX project** from simple confi
 
 ## Quick Example
 
-### Option 1: Web-based Configuration (Easiest)
-
-No command line needed! Use the **[interactive web generator](/web/config-generator/)** to:
-
-- Fill in your project details visually
-- Preview your `config.yaml` in real-time
-- Download the config file directly
-- Then run `python scripts/generate.py --config config.yaml`
-
-### Option 2: Command Line
+### Command Line
 
 ```bash
 # Install dependencies

@@ -6,7 +6,7 @@ Get started with the IITJ MTP Template Generator in 5 minutes!
 
 ## What you get (important)
 
-The generator creates a **LaTeX project** under `output/` with your **metadata** and **section files** (abstract, acknowledgments, declaration, certificate, chapters, etc.). Most **paragraphs are placeholders**—search for `[TODO]` and `% TODO`. Compiling to PDF **before** you replace that text produces a **layout preview**, not your finished submission. See [examples/README](../examples/README.md) for how sample configs relate to this.
+The generator creates a **LaTeX project** under `output/` with your **metadata** and **section files** (abstract, acknowledgments, declaration, certificate, chapters, etc.). Most **paragraphs are placeholders**—search for `[TODO]` and `% TODO`. Compiling to PDF **before** you replace that text produces a **layout preview**, not your finished submission. See [examples/README](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/blob/main/examples/README.md) for how sample configs relate to this.
 
 ## Prerequisites
 

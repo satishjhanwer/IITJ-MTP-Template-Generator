@@ -70,12 +70,12 @@ pdflatex proposal.tex
 
 ## Getting Started
 
-1. [Simple guide for beginners](beginners_guide) - Plain language: what you install, what you get, template PDF vs final PDF
-2. [Quick Start Guide](quickstart) - Get up and running in 5 minutes
-3. [CI/CD Auto-Compilation](ci_cd) - Automatic PDF generation with GitHub Actions
-4. [Input Schema](input-schema) - Learn about configuration options
-5. [Customization Guide](customization) - Personalize your templates
-6. [FAQ](faq) - Common questions and troubleshooting
+1. [Simple guide for beginners](beginners_guide.md) - Plain language: what you install, what you get, template PDF vs final PDF
+2. [Quick Start Guide](quickstart.md) - Get up and running in 5 minutes
+3. [CI/CD Auto-Compilation](ci_cd.md) - Automatic PDF generation with GitHub Actions
+4. [Input Schema](input-schema.md) - Learn about configuration options
+5. [Customization Guide](customization.md) - Personalize your templates
+6. [FAQ](faq.md) - Common questions and troubleshooting
 
 ## Example Output
 
@@ -101,4 +101,4 @@ MIT License - Free to use for academic and commercial purposes
 
 ---
 
-**Ready to create your academic report?** [Simple guide →](beginners_guide) &nbsp;·&nbsp; [Quick Start →](quickstart)
+**Ready to create your academic report?** [Simple guide →](beginners_guide.md) &nbsp;·&nbsp; [Quick Start →](quickstart.md)

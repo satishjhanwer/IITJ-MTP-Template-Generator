@@ -394,7 +394,7 @@ In `main.tex` or `proposal.tex`, comment out:
 - Check existing templates for examples
 - Consult [LaTeX documentation](https://www.overleaf.com/learn)
 - Ask in [GitHub Discussions](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/discussions)
-- See [FAQ](faq) for common issues
+- See [FAQ](faq.md) for common issues
 
 ---
 

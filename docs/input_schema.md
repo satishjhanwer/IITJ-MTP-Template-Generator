@@ -254,6 +254,6 @@ The generator validates your configuration:
 
 ## See Also
 
-- [Quick Start Guide](quickstart)
-- [Customization Guide](customization)
-- [FAQ](faq)
+- [Quick Start Guide](quickstart.md)
+- [Customization Guide](customization.md)
+- [FAQ](faq.md)

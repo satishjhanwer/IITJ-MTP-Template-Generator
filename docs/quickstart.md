@@ -2,7 +2,7 @@
 
 Get started with the IITJ MTP Template Generator in 5 minutes!
 
-**New to terminals or Python?** Start with the [Simple guide for beginners](beginners_guide).
+**New to terminals or Python?** Start with the [Simple guide for beginners](beginners_guide.md).
 
 ## What you get (important)
 
@@ -130,9 +130,9 @@ Open the generated PDF file:
 
 ## Next Steps
 
-- Read the [Input Schema](input-schema) to understand all configuration options
-- Check the [Customization Guide](customization) to personalize your report
-- See the [FAQ](faq) for common questions and issues
+- Read the [Input Schema](input-schema.md) to understand all configuration options
+- Check the [Customization Guide](customization.md) to personalize your report
+- See the [FAQ](faq.md) for common questions and issues
 
 ## Common Issues
 
@@ -158,7 +158,7 @@ Open the generated PDF file:
 
 ## Getting Help
 
-- Check the [FAQ](faq)
+- Check the [FAQ](faq.md)
 - Open an issue on [GitHub](https://github.com/satishjhanwer/IITJ-MTP-Template-Generator/issues)
 - Read the full documentation in the `docs/` directory
 
